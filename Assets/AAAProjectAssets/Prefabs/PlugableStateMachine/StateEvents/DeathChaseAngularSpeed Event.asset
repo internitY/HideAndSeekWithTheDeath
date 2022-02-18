@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27019f2e474272e45b6b3e6c567b0449, type: 3}
-  m_Name: WanderAction
+  m_Script: {fileID: 11500000, guid: 3e641ce5d302da34ca1f4c22358d34bc, type: 3}
+  m_Name: DeathChaseAngularSpeed Event
   m_EditorClassIdentifier: 
-  nextPointDelay: 3
+  angularSpeed: 120

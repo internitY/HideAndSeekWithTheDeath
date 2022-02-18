@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba67b46e385222e45b15690134063987, type: 3}
   m_Name: DeathWanderMovespeedEvent
   m_EditorClassIdentifier: 
-  moveSpeed: 3.5
+  moveSpeed: 3

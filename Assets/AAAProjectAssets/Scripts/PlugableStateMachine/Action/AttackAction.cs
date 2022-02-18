@@ -9,12 +9,21 @@ namespace MAED.ActionAndStates
         {
             Attack(controller);
         }
+
         private void Attack(PlugableStateController controller)
         {
-            if (Vector3.Distance(controller.transform.position, controller.ChaseTarget.transform.position) < 2f)
+            if (controller.CheckIfEventTimeElapsed(1f))
             {
-                controller.ChaseTarget.IsDead = true;
+                //check for repathing
+                if (Vector3.Distance(controller.transform.position, controller.ChaseTarget.transform.position) < controller.AttackRadius)
+                {
+                    controller.TakeDamage(controller);
+                    controller.ResetEventTime();
+                }
             }
+
+            
         }
     }
 }
+

@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27019f2e474272e45b6b3e6c567b0449, type: 3}
-  m_Name: WanderAction
+  m_Script: {fileID: 11500000, guid: e9b91e4918b0eca48bfc58f0a5d5f40d, type: 3}
+  m_Name: ResetControllerTimerEvent
   m_EditorClassIdentifier: 
-  nextPointDelay: 3
