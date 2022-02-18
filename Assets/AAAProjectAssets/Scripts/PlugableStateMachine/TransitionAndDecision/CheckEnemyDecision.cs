@@ -17,7 +17,7 @@ namespace MAED.ActionAndStates
 
             if (controller.nearCols.Length <= 0)
             {
-                Debug.Log("No EnemyCollider found.");
+                //Debug.Log("No EnemyCollider found.");
                 return false;
             }
 
@@ -38,7 +38,7 @@ namespace MAED.ActionAndStates
                         if (Physics.Linecast(controller.Eye.position, controller.nearCols[i].ClosestPoint(controller.Eye.position), out RaycastHit info,
                             controller.VisionBlockMask, QueryTriggerInteraction.Ignore))
                         {
-                            Debug.Log("Enemy |" + enemyController.name + "| Vision blocked by " + info.transform.name);
+                            //Debug.Log("Enemy |" + enemyController.name + "| Vision blocked by " + info.transform.name);
                         }
                         else
                         {
@@ -59,15 +59,15 @@ namespace MAED.ActionAndStates
                 if (target != null)
                 {
                     controller.SetChaseTarget(target);
-                    Debug.DrawLine(controller.Eye.position, target.transform.position, Color.yellow, 1f);
+                    //Debug.DrawLine(controller.Eye.position, target.transform.position, Color.yellow, 1f);
                     return true;
                 }
 
-                Debug.Log(name + " CheckForEnemies returned: null");
+                //Debug.Log(name + " CheckForEnemies returned: null");
                 return false;
             }
 
-            Debug.Log(name + " CheckForEnemies returned: null");
+            //Debug.Log(name + " CheckForEnemies returned: null");
             return false;
         }
     }

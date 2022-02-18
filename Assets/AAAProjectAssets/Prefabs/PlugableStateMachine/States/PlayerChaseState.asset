@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: PlayerChaseState
   m_EditorClassIdentifier: 
   StartEnterEvents: []
-  Actions: []
-  Transitions: []
-  StartExitEvents: []
+  Actions:
+  - {fileID: 11400000, guid: 82bd774fbe25bb745a7a39faa9d583a8, type: 2}
+  Transitions:
+  - Decision: {fileID: 11400000, guid: 0997265ab8731724f97ab487239f772b, type: 2}
+    TrueState: {fileID: 11400000, guid: b7dc62ae7b20b3142bc8bdc4e5756434, type: 2}
+    FalseState: {fileID: 11400000, guid: 40b9aebb91d11a0438639f979feb278c, type: 2}
+  StartExitEvents:
+  - {fileID: 11400000, guid: f140e0e5d5749ac4caea232f418f1c47, type: 2}
   SceneGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

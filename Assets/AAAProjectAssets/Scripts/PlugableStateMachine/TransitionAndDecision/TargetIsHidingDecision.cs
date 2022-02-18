@@ -12,6 +12,11 @@ namespace MAED.ActionAndStates
 
         private bool TargetIsHiding(PlugableStateController controller)
         {
+            if (controller.ChaseTarget.IsHiding)
+            {
+                return true;
+            }
+
             if (Vector3.Distance(controller.transform.position, controller.ChaseTarget.transform.position) > controller.VisionRadius)
             {
                 return true;

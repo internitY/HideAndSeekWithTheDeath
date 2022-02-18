@@ -2703,6 +2703,7 @@ MonoBehaviour:
     m_Bits: 128
   eye: {fileID: 1758732496}
   isDead: 0
+  isHiding: 0
   magnitude: 0
   chaseTarget: {fileID: 0}
   eventTime: 0
@@ -3130,7 +3131,7 @@ MonoBehaviour:
   resetstate: {fileID: 11400000, guid: bf060396d743bab469d097b2acb6fc0f, type: 2}
   remainState: {fileID: 11400000, guid: 40b9aebb91d11a0438639f979feb278c, type: 2}
   nearCols: []
-  visionRadius: 10
+  visionRadius: 7.5
   enemyMask:
     serializedVersion: 2
     m_Bits: 256
@@ -3139,6 +3140,7 @@ MonoBehaviour:
     m_Bits: 128
   eye: {fileID: 1872402351}
   isDead: 0
+  isHiding: 0
   magnitude: 0
   chaseTarget: {fileID: 0}
   eventTime: 0

@@ -1,3 +1,4 @@
+using System.Collections;
 using Pathfinding;
 using Pathfinding.RVO;
 using UnityEngine;
@@ -28,6 +29,7 @@ namespace MAED.ActionAndStates
         [SerializeField] private LayerMask visionBlockMask;
         [SerializeField] private Transform eye;
         [SerializeField, ShowOnly] protected bool isDead = false;
+        [SerializeField, ShowOnly] protected bool isHiding = false;
 
         [Header("Destination")]
         [SerializeField, ShowOnly] protected float magnitude;
@@ -43,11 +45,15 @@ namespace MAED.ActionAndStates
         [SerializeField] private bool enableDebug = false;
 
         #region getter
-
         public bool IsDead
         {
             get => isDead;
             set => isDead = value;
+        }
+        public bool IsHiding
+        {
+            get => isHiding;
+            set => isHiding = value;
         }
         public PlugableStateController ChaseTarget => chaseTarget;
         public float VisionRadius => visionRadius;
@@ -211,11 +217,12 @@ namespace MAED.ActionAndStates
         }
         #endregion pathfinding
 
+        #region target chasing
         public void SetChaseTarget(PlugableStateController target)
         {
             if (enableDebug)
             {
-                Debug.Log(name  + " set chase target to " + target.name);
+                Debug.Log(name + " set chase target to " + target.name);
             }
 
             chaseTarget = target;
@@ -224,16 +231,51 @@ namespace MAED.ActionAndStates
             {
                 SetDestination(target.transform.position);
             }
+            else
+            {
+                StartCoroutine(LoseTargetFocus());
+            }
         }
+
+        private IEnumerator LoseTargetFocus()
+        {
+            float currentTime = 2f;
+
+            while (currentTime > 0f)
+            {
+                currentTime -= Time.deltaTime;
+
+                if (Vector3.Distance(transform.position, chaseTarget.transform.position) < visionRadius
+                    && !Physics.Linecast(transform.position, chaseTarget.transform.position, visionBlockMask, QueryTriggerInteraction.Ignore))
+                {
+                    currentTime = 2f;
+                }
+
+                yield return null;
+            }
+
+            chaseTarget = null;
+        }
+        #endregion target chasing
+
 
 #if UNITY_EDITOR
         #region gizmos
         private void OnDrawGizmos()
         {
+            Gizmos.color = Color.white;
+            Gizmos.DrawWireSphere(eye.position, visionRadius);
+
             if (currentState != null)
             {
                 Gizmos.color = currentState.SceneGizmoColor;
                 Gizmos.DrawSphere(transform.position + Vector3.up * 2, 0.3f);
+            }
+
+            if (chaseTarget != null)
+            {
+                Gizmos.color = Color.red;
+                Gizmos.DrawLine(eye.position, chaseTarget.Eye.position);
             }
         }
 
