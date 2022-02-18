@@ -916,7 +916,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &364468598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4405,7 +4405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1432210067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6032,7 +6032,7 @@ MonoBehaviour:
   aiIsActive: 1
   blockWhilePathCalculating: 1
   currentState: {fileID: 0}
-  chaseState: {fileID: 11400000, guid: 040a3470b045edd49a4aae931b939458, type: 2}
+  chaseState: {fileID: 11400000, guid: ba4e56352cf33004fb83921e7d359ea2, type: 2}
   interactState: {fileID: 11400000, guid: de00605f6e59c9949a7a68a9b7a0eb96, type: 2}
   resetstate: {fileID: 11400000, guid: d7c4c7962c31ebe458e12b4fd113d946, type: 2}
   remainState: {fileID: 11400000, guid: 40b9aebb91d11a0438639f979feb278c, type: 2}
@@ -6524,7 +6524,7 @@ MonoBehaviour:
   aiIsActive: 1
   blockWhilePathCalculating: 1
   currentState: {fileID: 0}
-  chaseState: {fileID: 11400000, guid: 040a3470b045edd49a4aae931b939458, type: 2}
+  chaseState: {fileID: 11400000, guid: ba4e56352cf33004fb83921e7d359ea2, type: 2}
   interactState: {fileID: 11400000, guid: de00605f6e59c9949a7a68a9b7a0eb96, type: 2}
   resetstate: {fileID: 11400000, guid: d7c4c7962c31ebe458e12b4fd113d946, type: 2}
   remainState: {fileID: 11400000, guid: 40b9aebb91d11a0438639f979feb278c, type: 2}
