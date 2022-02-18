@@ -10,5 +10,11 @@ public class LightInteract : MonoBehaviour, IInteractable
     public void Use()
     {
         pointLight.color = Color.red;
+
+        Debug.LogError("Do the LightAction Explosion");
+
+        //TODO
+        //DeactivateInteract
+        //ShockReaper If in Range
     }
 }

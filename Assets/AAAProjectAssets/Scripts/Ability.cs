@@ -51,4 +51,8 @@ public class Ability : MonoBehaviour
         return InteractTag;
     }
 
+    public bool IsUnlocked()
+    {
+        return isUnlocked;
+    }
 }

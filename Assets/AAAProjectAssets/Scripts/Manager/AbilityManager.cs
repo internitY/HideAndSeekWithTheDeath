@@ -29,7 +29,10 @@ public class AbilityManager : MonoBehaviour
     {
         playerInput.Enable();
         playerInput.Player.MousePosition.performed += context => mousePosition = context.ReadValue<Vector2>();
-        //Input 1-4?
+        playerInput.Player.Ability1.performed += context => CheckAbility(0);
+        playerInput.Player.Ability2.performed += context => CheckAbility(1);
+        playerInput.Player.Ability3.performed += context => CheckAbility(2);
+        playerInput.Player.Ability4.performed += context => CheckAbility(3);
         playerInput.Player.Primary.performed += context => OnPrimaryStarted();
         playerInput.Player.Secondary.performed += context => OnEscStarted();
         playerInput.Player.ESC.performed += context => OnEscStarted();
@@ -46,7 +49,10 @@ public class AbilityManager : MonoBehaviour
         if (activeAbility == -1)
             return;
         //Click on Object of current Ability
-        abilities[activeAbility].UseAbility(GetWorldPointInteractable(abilities[activeAbility].GetTag()));
+        IInteractable interactable = GetWorldPointInteractable(abilities[activeAbility].GetTag());
+        //Debug.Log(interactable);
+        if(interactable != null)
+            abilities[activeAbility].UseAbility(interactable);
 
     }
 
@@ -75,12 +81,27 @@ public class AbilityManager : MonoBehaviour
 
         if (Physics.Raycast(mouseRaycast, out mouseRaycastHit, 50f, worldPositionMask))
         {
-            if(mouseRaycastHit.collider.CompareTag(tagerino))
+            if (mouseRaycastHit.collider.CompareTag(tagerino))
+            {
                 return mouseRaycastHit.collider.gameObject.GetComponent<IInteractable>();
+            }
+            else
+                Debug.Log("Nope");
         }
         
         return null;
     }
 
+    private void CheckAbility(int index)
+    {
+        if (abilities[index].IsUnlocked())
+        {
+            activeAbility = index;
+        }
+        else
+        {
+            index = -1;
+        }
+    }
 
 }
