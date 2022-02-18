@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DeathWanderState
   m_EditorClassIdentifier: 
   StartEnterEvents:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 2c06e1d41981cae4184018949582382a, type: 2}
   Actions:
   - {fileID: 11400000, guid: a6a483a32f66c9a4d871eb2912dd875f, type: 2}
   Transitions:

@@ -25,8 +25,6 @@ namespace MAED.ActionAndStates
 
             if (controller.nearCols.Length > 0)
             {
-                float sqrD = Mathf.Infinity;
-
                 //get nearest enemy
                 for (int i = 0; i < controller.nearCols.Length; i++)
                 {
@@ -42,11 +40,25 @@ namespace MAED.ActionAndStates
                         }
                         else
                         {
-                            float d = (controller.nearCols[i].transform.position - controller.transform.position).sqrMagnitude;
+                            float dist = Vector3.Distance(controller.transform.position, enemyController.transform.position);
 
-                            if (d < sqrD)
+                            if (dist < controller.OverallAttractRadius)
                             {
                                 target = enemyController;
+                                Debug.Log("Target " + enemyController.transform.name + " is in short range overall attract range.");
+                            }
+                            else
+                            {
+                                if (!controller.TargetIsInsideVisionAngle(enemyController.transform.position))
+                                {
+                                    Debug.Log("Target " + enemyController.transform.name + " is NOT inside the vision angle.");
+                                    continue;
+                                }
+                                else
+                                {
+                                    target = enemyController;
+                                    Debug.Log("Target " + enemyController.transform.name + " inside the vision angle.");
+                                }
                             }
                         }
                     }

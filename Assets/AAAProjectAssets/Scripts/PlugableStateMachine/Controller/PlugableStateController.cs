@@ -25,6 +25,9 @@ namespace MAED.ActionAndStates
 
         [Header("Entity Values")] 
         [SerializeField, Range(5f, 30f)] private float visionRadius = 10f;
+        [SerializeField, Range(0f, 360f)] private float visionAngle = 360f;
+        [SerializeField, Range(1f, 10f)] private float overallAttractRadius = 3f;
+
         [SerializeField] private LayerMask enemyMask;
         [SerializeField] private LayerMask visionBlockMask;
         [SerializeField] private Transform eye;
@@ -55,8 +58,10 @@ namespace MAED.ActionAndStates
             get => isHiding;
             set => isHiding = value;
         }
+        public RichAI RichAI => aiPath;
         public PlugableStateController ChaseTarget => chaseTarget;
         public float VisionRadius => visionRadius;
+        public float OverallAttractRadius => overallAttractRadius;
         public LayerMask EnemyMask => enemyMask;
         public LayerMask VisionBlockMask => visionBlockMask;
         public Transform Eye => eye;
@@ -96,7 +101,7 @@ namespace MAED.ActionAndStates
                 return;
 
             magnitude = ReachedDestination ? 0f : aiPath.velocity.magnitude;
-            anim?.SetFloat("sqrVelocity", magnitude * 0.5f);
+            anim?.SetFloat("velocity", magnitude * 0.5f);
             currentState.UpdateState(this);
         }
         /// <summary>
@@ -128,7 +133,8 @@ namespace MAED.ActionAndStates
 
             currentState = nextState;
 
-            currentState.OnStateEnter(this);
+            if (currentState != null)
+                currentState.OnStateEnter(this);
         }
         /// <summary>
         /// Checks if the event time is reached.
@@ -195,7 +201,7 @@ namespace MAED.ActionAndStates
         {
             aiPath.canMove = false;
             seeker.CancelCurrentPathRequest();
-            anim?.SetFloat("sqrVelocity", 0f);
+            anim?.SetFloat("velocity", 0f);
             return true;
         }
         public bool ReachedDestination
@@ -218,23 +224,58 @@ namespace MAED.ActionAndStates
         #endregion pathfinding
 
         #region target chasing
+        public bool TargetIsInsideVisionAngle(Vector3 queryPosition, bool igoreY = true)
+        {
+            if (igoreY)
+                queryPosition.y = 0;
+
+            Vector3 targetVector = (queryPosition - transform.position).normalized;
+            float angle = Vector3.Angle(transform.forward, targetVector);
+
+            return angle <= visionAngle * 0.5f;
+        }
+
         public void SetChaseTarget(PlugableStateController target)
         {
-            if (enableDebug)
-            {
-                Debug.Log(name + " set chase target to " + target.name);
-            }
-
             chaseTarget = target;
 
             if (target != null)
             {
                 SetDestination(target.transform.position);
+
+                if (enableDebug)
+                {
+                    Debug.Log(name + " set chase target to " + target.name);
+                }
             }
             else
             {
                 StartCoroutine(LoseTargetFocus());
+
+                if (enableDebug)
+                {
+                    Debug.Log(name + " set chase target to null.");
+                }
             }
+        }
+
+        private IEnumerator GetTargetFocus(PlugableStateController target)
+        {
+            float currentTime = 1f;
+
+            while (currentTime > 0f)
+            {
+                currentTime -= Time.deltaTime;
+
+                if (chaseTarget == null)
+                {
+                    yield break;
+                }
+
+                yield return null;
+            }
+
+
         }
 
         private IEnumerator LoseTargetFocus()
@@ -245,10 +286,9 @@ namespace MAED.ActionAndStates
             {
                 currentTime -= Time.deltaTime;
 
-                if (Vector3.Distance(transform.position, chaseTarget.transform.position) < visionRadius
-                    && !Physics.Linecast(transform.position, chaseTarget.transform.position, visionBlockMask, QueryTriggerInteraction.Ignore))
+                if (chaseTarget != null)
                 {
-                    currentTime = 2f;
+                    yield break;
                 }
 
                 yield return null;
@@ -266,16 +306,28 @@ namespace MAED.ActionAndStates
             Gizmos.color = Color.white;
             Gizmos.DrawWireSphere(eye.position, visionRadius);
 
+            Gizmos.color = Color.grey;
+            Gizmos.DrawWireSphere(eye.position, overallAttractRadius);
+
             if (currentState != null)
             {
                 Gizmos.color = currentState.SceneGizmoColor;
                 Gizmos.DrawSphere(transform.position + Vector3.up * 2, 0.3f);
             }
-
+            
             if (chaseTarget != null)
             {
-                Gizmos.color = Color.red;
+                Gizmos.color = TargetIsInsideVisionAngle(chaseTarget.transform.position) ? Color.red : Color.yellow;
                 Gizmos.DrawLine(eye.position, chaseTarget.Eye.position);
+            }
+
+            if (visionAngle < 360f)
+            {
+                Gizmos.color = Color.yellow;
+                Vector3 leftAngle = Quaternion.AngleAxis(-visionAngle * 0.5f, Vector3.up) * transform.forward;
+                Vector3 rightAngle = Quaternion.AngleAxis(visionAngle * 0.5f, Vector3.up) * transform.forward;
+                Gizmos.DrawRay(eye.position, leftAngle * visionRadius);
+                Gizmos.DrawRay(eye.position, rightAngle * visionRadius);
             }
         }
 

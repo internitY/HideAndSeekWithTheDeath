@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d260da0337d9f45a8d083760e4f6a3, type: 3}
   m_Name: DeathChaseState
   m_EditorClassIdentifier: 
-  StartEnterEvents: []
+  StartEnterEvents:
+  - {fileID: 11400000, guid: 2dc066075eb75e148b82c004cdaba6ee, type: 2}
   Actions:
   - {fileID: 11400000, guid: 82bd774fbe25bb745a7a39faa9d583a8, type: 2}
   Transitions:
