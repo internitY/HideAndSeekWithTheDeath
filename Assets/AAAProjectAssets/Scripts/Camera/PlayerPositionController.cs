@@ -1,23 +1,31 @@
+using MAED.ActionAndStates;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerPositionController : MonoBehaviour
 {
     private PlayerControls playerInput;
-    private PlayerController playerController;
 
     [Header("Player Input")] 
     [SerializeField] private LayerMask worldPositionMask;
     [SerializeField, ShowOnly] private Vector2 mousePosition;
 
+    [Header("Player References")]
+    [SerializeField] private PlugableStateController playerController;
+    [SerializeField] private State playerMoveState;
+    [SerializeField] private Transform playerWaypointMarker;
+
     private Ray mouseRaycast;
     private RaycastHit mouseRaycastHit;
+
+    #region getter
+    public Transform PlayerWaypointMarker => playerWaypointMarker;
+    
+
+    #endregion getter
 
     #region unity
     private void Awake()
     {
-        playerController = FindObjectOfType<PlayerController>();
-
         if (playerInput == null)
             playerInput = new PlayerControls();
     }
@@ -35,21 +43,17 @@ public class PlayerPositionController : MonoBehaviour
     {
         playerInput.Disable();
     }
-
-    private void Update()
-    {
-        //mousePosition = Mouse.current.position.ReadValue();
-    }
     #endregion unity
 
     #region input events
     private void OnPrimaryStarted()
     {
-        playerController.SetPlayerDestination(GetWorldPoint());
+        
     }
     private void OnSecondaryStarted()
     {
-
+        playerWaypointMarker.position = GetWorldPoint();
+        playerController.SetDestination(playerWaypointMarker.position);
     }
     private void OnEscStarted()
     {
@@ -62,14 +66,19 @@ public class PlayerPositionController : MonoBehaviour
     private Vector3 GetWorldPoint()
     {
         mouseRaycast = Camera.main.ScreenPointToRay(mousePosition);
+        Vector3 newWorldPoint = Vector3.zero;
 
-        if (Physics.Raycast(mouseRaycast, out mouseRaycastHit, 100f, worldPositionMask))
+        if (Physics.Raycast(mouseRaycast, out mouseRaycastHit, 50f, worldPositionMask))
         {
-            return mouseRaycastHit.point;
+            newWorldPoint = mouseRaycastHit.point;
+            newWorldPoint.y = 0;
+            return newWorldPoint;
         }
 
         Debug.LogWarning("Not hitted ground with mosue raycast.");
-        return mouseRaycast.GetPoint(20f);
+        newWorldPoint = mouseRaycast.GetPoint(25);
+        newWorldPoint.y = 0;
+        return newWorldPoint;
     }
 
 
