@@ -12,7 +12,7 @@ namespace MAED.ActionAndStates
         private void Chase(PlugableStateController controller)
         {
             //check for repathing
-            if (Vector3.Distance(controller.transform.position, controller.ChaseTarget.transform.position) > controller.VisionRadius)
+            if (Vector3.Distance(controller.transform.position, controller.ChaseTarget.transform.position) < controller.VisionRadius)
             {
                 controller.SetDestination(controller.ChaseTarget.transform.position);
             }

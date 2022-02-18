@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Pathfinding;
 using Pathfinding.RVO;
 using UnityEngine;
@@ -11,7 +8,6 @@ namespace MAED.ActionAndStates
     {
         private RichAI aiPath;
         private Seeker seeker;
-        private RVOController rvo;
         private Animator anim;
 
         [SerializeField] private bool aiIsActive = true;
@@ -53,7 +49,7 @@ namespace MAED.ActionAndStates
             get => isDead;
             set => isDead = value;
         }
-        public PlugableStateController ChaseTarget;
+        public PlugableStateController ChaseTarget => chaseTarget;
         public float VisionRadius => visionRadius;
         public LayerMask EnemyMask => enemyMask;
         public LayerMask VisionBlockMask => visionBlockMask;
@@ -65,7 +61,6 @@ namespace MAED.ActionAndStates
         {
             aiPath = GetComponent<RichAI>();
             seeker = GetComponent<Seeker>();
-            rvo = GetComponent<RVOController>();
             anim = GetComponentInChildren<Animator>();
         }
         private void Start()
@@ -218,6 +213,11 @@ namespace MAED.ActionAndStates
 
         public void SetChaseTarget(PlugableStateController target)
         {
+            if (enableDebug)
+            {
+                Debug.Log(name  + " set chase target to " + target.name);
+            }
+
             chaseTarget = target;
 
             if (target != null)

@@ -17,7 +17,7 @@ namespace MAED.ActionAndStates
 
             if (controller.nearCols.Length <= 0)
             {
-                //Debug.Log("No EnemyCollider found.");
+                Debug.Log("No EnemyCollider found.");
                 return false;
             }
 
@@ -63,11 +63,11 @@ namespace MAED.ActionAndStates
                     return true;
                 }
 
-                //Debug.Log(name + " CheckForEnemies returned: null");
+                Debug.Log(name + " CheckForEnemies returned: null");
                 return false;
             }
 
-            //Debug.Log(name + " CheckForEnemies returned: null");
+            Debug.Log(name + " CheckForEnemies returned: null");
             return false;
         }
     }
