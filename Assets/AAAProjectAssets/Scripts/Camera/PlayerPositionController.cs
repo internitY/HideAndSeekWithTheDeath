@@ -12,6 +12,7 @@ public class PlayerPositionController : MonoBehaviour
     [Header("Player References")]
     [SerializeField] private PlugableStateController playerController;
     [SerializeField] private State playerMoveState;
+    [SerializeField] private State playerInteractState;
     [SerializeField] private Transform playerWaypointMarker;
 
     private Ray mouseRaycast;
@@ -29,7 +30,6 @@ public class PlayerPositionController : MonoBehaviour
         if (playerInput == null)
             playerInput = new PlayerControls();
     }
-
     private void OnEnable()
     {
         playerInput.Enable();
@@ -38,7 +38,6 @@ public class PlayerPositionController : MonoBehaviour
         playerInput.Player.Secondary.performed += context => OnSecondaryStarted();
         playerInput.Player.ESC.performed += context => OnEscStarted();
     }
-
     private void OnDisable()
     {
         playerInput.Disable();

@@ -25,8 +25,6 @@ namespace MAED.ActionAndStates
 
             if (controller.nearCols.Length > 0)
             {
-                float sqrD = Mathf.Infinity;
-
                 //get nearest enemy
                 for (int i = 0; i < controller.nearCols.Length; i++)
                 {
@@ -38,15 +36,29 @@ namespace MAED.ActionAndStates
                         if (Physics.Linecast(controller.Eye.position, controller.nearCols[i].ClosestPoint(controller.Eye.position), out RaycastHit info,
                             controller.VisionBlockMask, QueryTriggerInteraction.Ignore))
                         {
-                            Debug.Log("Enemy |" + enemyController.name + "| Vision blocked by " + info.transform.name);
+                            //Debug.Log("Enemy |" + enemyController.name + "| Vision blocked by " + info.transform.name);
                         }
                         else
                         {
-                            float d = (controller.nearCols[i].transform.position - controller.transform.position).sqrMagnitude;
+                            float dist = Vector3.Distance(controller.transform.position, enemyController.transform.position);
 
-                            if (d < sqrD)
+                            if (dist < controller.OverallAttractRadius)
                             {
                                 target = enemyController;
+                                Debug.Log("Target " + enemyController.transform.name + " is in short range overall attract range.");
+                            }
+                            else
+                            {
+                                if (!controller.TargetIsInsideVisionAngle(enemyController.transform.position))
+                                {
+                                    Debug.Log("Target " + enemyController.transform.name + " is NOT inside the vision angle.");
+                                    continue;
+                                }
+                                else
+                                {
+                                    target = enemyController;
+                                    Debug.Log("Target " + enemyController.transform.name + " inside the vision angle.");
+                                }
                             }
                         }
                     }
@@ -59,7 +71,7 @@ namespace MAED.ActionAndStates
                 if (target != null)
                 {
                     controller.SetChaseTarget(target);
-                    Debug.DrawLine(controller.Eye.position, target.transform.position, Color.yellow, 1f);
+                    //Debug.DrawLine(controller.Eye.position, target.transform.position, Color.yellow, 1f);
                     return true;
                 }
 

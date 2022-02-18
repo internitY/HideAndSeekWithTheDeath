@@ -15,9 +15,15 @@ TagManager:
   - UI
   - Ground
   - VisionBlocker
+<<<<<<< HEAD
   - Interactable
   - 
   - 
+=======
+  - Player
+  - TheDeath
+  - Interactable
+>>>>>>> origin/Eric
   - 
   - 
   - 
