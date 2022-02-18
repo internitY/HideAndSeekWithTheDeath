@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 294910969}
   - component: {fileID: 294910968}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,8 +234,10 @@ GameObject:
   m_Component:
   - component: {fileID: 479899966}
   - component: {fileID: 479899965}
+  - component: {fileID: 479899967}
+  - component: {fileID: 479899968}
   m_Layer: 0
-  m_Name: Timer
+  m_Name: Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -255,6 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeText: {fileID: 1457346721}
   remainingTime: 5
+  timerIsRunning: 1
 --- !u!4 &479899966
 Transform:
   m_ObjectHideFlags: 0
@@ -270,6 +273,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &479899967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479899964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de45eacd87081942a6d2af0962862b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &479899968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479899964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9358a1b255e579249926e256d891de56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectCount: 0
+  unlock1: 1
+  unlock2: 2
+  unlock3: 3
+  unlock4: 4
 --- !u!1 &661905264
 GameObject:
   m_ObjectHideFlags: 0
