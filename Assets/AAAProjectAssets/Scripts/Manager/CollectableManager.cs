@@ -4,13 +4,29 @@ using UnityEngine;
 
 public class CollectableManager : MonoBehaviour
 {
+    public static CollectableManager Instance;
+
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+        {
+            Destroy(this);
+        }
+    }
+
 
     [SerializeField]
     private int collectCount = 0;
 
     [SerializeField]
     private int[] unlockAtCount;
-    // Start is called before the first frame update
+    
+
+
+
     
     public void Collect()
     {
