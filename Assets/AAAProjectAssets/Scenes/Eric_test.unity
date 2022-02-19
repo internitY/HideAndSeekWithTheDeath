@@ -910,7 +910,7 @@ GameObject:
   - component: {fileID: 364468600}
   - component: {fileID: 364468599}
   - component: {fileID: 364468598}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: TheDeath_Randomer (1)
   m_TagString: TheDeath
   m_Icon: {fileID: 0}
@@ -3859,7 +3859,7 @@ GameObject:
   - component: {fileID: 1280617430}
   - component: {fileID: 1280617429}
   - component: {fileID: 1280617432}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4399,7 +4399,7 @@ GameObject:
   - component: {fileID: 1432210068}
   - component: {fileID: 1432210067}
   - component: {fileID: 1432210073}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: TheDeath_Randomer
   m_TagString: TheDeath
   m_Icon: {fileID: 0}
@@ -6010,7 +6010,7 @@ GameObject:
   - component: {fileID: 1870233422}
   - component: {fileID: 1870233421}
   - component: {fileID: 1870233420}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: TheDeath_Patroler
   m_TagString: TheDeath
   m_Icon: {fileID: 0}
@@ -6502,7 +6502,7 @@ GameObject:
   - component: {fileID: 1898426582}
   - component: {fileID: 1898426581}
   - component: {fileID: 1898426580}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: TheDeath_Patroler (1)
   m_TagString: TheDeath
   m_Icon: {fileID: 0}
