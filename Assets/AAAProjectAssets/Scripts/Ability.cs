@@ -55,4 +55,12 @@ public class Ability : MonoBehaviour
     {
         return isUnlocked;
     }
+    public void ActiveState()
+    {
+        icon.color = Color.cyan;
+    }
+    public void InActiveState()
+    {
+        icon.color = isUnlocked ? Color.white : Color.gray;
+    }
 }

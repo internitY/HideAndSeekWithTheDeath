@@ -50,7 +50,13 @@ public class AbilityManager : MonoBehaviour
     #region AbilityUse
 
     private void OnPrimaryStarted()
+
     {
+        if (waitForWinState)
+        {
+            winInteractable.CancelWaitForWin();
+        }
+
         if (activeAbility == -1)
             return;
         //Click on Object of current Ability
@@ -58,6 +64,11 @@ public class AbilityManager : MonoBehaviour
         //Debug.Log(interactable);
         if(interactable != null)
             abilities[activeAbility].UseAbility(interactable);
+
+        foreach (var item in abilities)
+        {
+            item.InActiveState();
+        }
 
     }
 
@@ -67,6 +78,12 @@ public class AbilityManager : MonoBehaviour
     {
         //CancelAbility use
         activeAbility = -1;
+        if (waitForWinState)
+        {
+            winInteractable.CancelWaitForWin();
+        }
+
+
     }
 
     #endregion AbilityUse
@@ -99,9 +116,19 @@ public class AbilityManager : MonoBehaviour
 
     private void CheckAbility(int index)
     {
+        if (waitForWinState)
+        {
+            winInteractable.CancelWaitForWin();
+        }
+
+        foreach (var item in abilities)
+        {
+            item.InActiveState();
+        }
         if (abilities[index].IsUnlocked())
         {
             activeAbility = index;
+            abilities[index].ActiveState();
             Debug.Log("Active Ability: " + index);
         }
         else
