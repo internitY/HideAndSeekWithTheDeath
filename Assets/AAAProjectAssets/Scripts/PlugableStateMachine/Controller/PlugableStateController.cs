@@ -51,6 +51,18 @@ namespace MAED.ActionAndStates
         [SerializeField] private bool enableDebug = false;
 
         #region getter
+
+        public bool IsActive
+        {
+            get => IsActive;
+            set
+            {
+                IsActive = value;
+
+                if (!IsActive)
+                    StopMovement();
+            }
+        }
         public bool IsDead
         {
             get => isDead;
@@ -220,6 +232,7 @@ namespace MAED.ActionAndStates
         }
         public bool StopMovement()
         {
+            aiPath.destination = transform.position;
             aiPath.canMove = false;
             seeker.CancelCurrentPathRequest();
             anim?.SetFloat("velocity", 0f);

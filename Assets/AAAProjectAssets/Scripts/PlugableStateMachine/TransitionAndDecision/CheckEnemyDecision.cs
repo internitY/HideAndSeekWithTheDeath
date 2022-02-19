@@ -49,15 +49,14 @@ namespace MAED.ActionAndStates
                             }
                             else
                             {
-                                if (!controller.TargetIsInsideVisionAngle(enemyController.transform.position))
-                                {
-                                    Debug.Log("Target " + enemyController.transform.name + " is NOT inside the vision angle.");
-                                    continue;
-                                }
-                                else
+                                if (controller.TargetIsInsideVisionAngle(enemyController.transform.position))
                                 {
                                     target = enemyController;
                                     Debug.Log("Target " + enemyController.transform.name + " inside the vision angle.");
+                                }
+                                else
+                                {
+                                    Debug.Log("Target " + enemyController.transform.name + " is NOT inside the vision angle.");
                                 }
                             }
                         }
