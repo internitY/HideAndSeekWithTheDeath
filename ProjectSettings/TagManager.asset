@@ -3,9 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - TheDeath
-  - Light
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -13,17 +11,11 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
-  - VisionBlocker
-<<<<<<< HEAD
-  - Interactable
   - 
   - 
-=======
-  - Player
-  - TheDeath
-  - Interactable
->>>>>>> origin/Eric
+  - 
+  - 
+  - 
   - 
   - 
   - 
