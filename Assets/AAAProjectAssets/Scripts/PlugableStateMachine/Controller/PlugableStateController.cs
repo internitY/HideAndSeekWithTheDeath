@@ -41,6 +41,8 @@ namespace MAED.ActionAndStates
 
         [Header("Target References")]
         [SerializeField, ShowOnly] protected PlugableStateController chaseTarget;
+        [SerializeField, ShowOnly] protected Vector3 lastTargetPosition;
+        [SerializeField, ShowOnly] protected Vector3 lastTargetDirection;
 
         [Header("Timers")] 
         [ShowOnly] public float eventTime;
@@ -66,7 +68,18 @@ namespace MAED.ActionAndStates
             }
         }
         public RichAI RichAI => aiPath;
+        public State CurrentState => currentState;
+        public State ResetState => resetstate;
         public PlugableStateController ChaseTarget => chaseTarget;
+        public Vector3 LastTargetPosition { 
+            get => lastTargetPosition;
+            set => lastTargetPosition = value;
+        }
+        public Vector3 LastTargetDirection
+        {
+            get => lastTargetDirection;
+            set => lastTargetDirection = value;
+        }
         public float AttackRadius => attackRadius;
         public float VisionRadius => visionRadius;
         public float OverallAttractRadius => overallAttractRadius;
@@ -271,7 +284,7 @@ namespace MAED.ActionAndStates
 
 #if UNITY_EDITOR
         #region gizmos
-        private void OnDrawGizmos()
+        protected virtual void OnDrawGizmos()
         {
             Gizmos.color = Color.white;
             Gizmos.DrawWireSphere(eye.position, visionRadius);
@@ -301,7 +314,7 @@ namespace MAED.ActionAndStates
             }
         }
 
-        private void OnDrawGizmosSelected()
+        protected virtual void OnDrawGizmosSelected()
         {
             if (!enableDebug)
                 return;

@@ -15,6 +15,9 @@ public class PlayerPositionController : MonoBehaviour
     [SerializeField] private State playerInteractState;
     [SerializeField] private Transform playerWaypointMarker;
 
+    private bool holdingPrimary = false;
+    private bool holdingSecondary = false;
+
     private Ray mouseRaycast;
     private RaycastHit mouseRaycastHit;
 
@@ -34,25 +37,48 @@ public class PlayerPositionController : MonoBehaviour
     {
         playerInput.Enable();
         playerInput.Player.MousePosition.performed += context => mousePosition = context.ReadValue<Vector2>();
+
         playerInput.Player.Primary.performed += context => OnPrimaryStarted();
+        playerInput.Player.Primary.canceled += context => OnPrimaryEnded();
+
         playerInput.Player.Secondary.performed += context => OnSecondaryStarted();
+        playerInput.Player.Secondary.canceled += context => OnSecondaryEnded();
+
         playerInput.Player.ESC.performed += context => OnEscStarted();
     }
     private void OnDisable()
     {
         playerInput.Disable();
     }
+    private void Update()
+    {
+        if (holdingSecondary)
+        {
+            playerWaypointMarker.position = GetWorldPoint();
+            playerController.SetDestination(playerWaypointMarker.position);
+        }
+    }
     #endregion unity
 
     #region input events
     private void OnPrimaryStarted()
     {
-        
+        holdingPrimary = true;
+    }
+    private void OnPrimaryEnded()
+    {
+        holdingPrimary = false;
     }
     private void OnSecondaryStarted()
     {
+        holdingSecondary = true;
+
         playerWaypointMarker.position = GetWorldPoint();
         playerController.SetDestination(playerWaypointMarker.position);
+    }
+    private void OnSecondaryEnded()
+    {
+        holdingSecondary = false;
     }
     private void OnEscStarted()
     {

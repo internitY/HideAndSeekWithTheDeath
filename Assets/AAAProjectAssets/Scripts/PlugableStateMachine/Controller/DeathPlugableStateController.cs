@@ -33,7 +33,7 @@ namespace MAED.ActionAndStates
 
         public override void OnChaseTargetSet(PlugableStateController target)
         {
-            eyeImage.color = target == null ? wanderColor : chaseColor;
+            eyeImage.color = CurrentState.SceneGizmoColor;
         }
 
         #region patrol
@@ -100,6 +100,31 @@ namespace MAED.ActionAndStates
             //Debug.Log(name + " took next patrol point to " + patrolWaypoints[currentPatrolPointIndex]);
         }
         #endregion patrol
+
+        protected override void OnDrawGizmos()
+        {
+            base.OnDrawGizmos();
+
+            if (patrolWaypoints.Length > 0 && patrolType != PatrolType.Random)
+            {
+                Gizmos.color = Color.white;
+                Gizmos.DrawLine(transform.position, patrolWaypoints[0].position);
+
+                for (int i = 0; i < patrolWaypoints.Length - 1; i++)
+                {
+                    Gizmos.color = Color.white;
+                    Gizmos.DrawLine(transform.position, patrolWaypoints[i + 1].position);
+
+                    Gizmos.color = Color.cyan;
+                    Gizmos.DrawLine(patrolWaypoints[i].position, patrolWaypoints[i + 1].position);
+                }
+
+                if (patrolType == PatrolType.Loop)
+                {
+                    Gizmos.DrawLine(patrolWaypoints[0].position, patrolWaypoints[patrolWaypoints.Length - 1].position);
+                }
+            }
+        }
     }
 }
 
