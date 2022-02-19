@@ -107,14 +107,17 @@ namespace MAED.ActionAndStates
             seeker = GetComponent<Seeker>();
             anim = GetComponentInChildren<Animator>();
         }
-        private void Start()
+        protected virtual IEnumerator Start()
         {
+            while (PatrolPathManager.Instance == null)
+            {
+                yield return null;
+            }
             SetToState(resetstate);
-            aiIsActive = true;
         }
         protected virtual void OnEnable()
         {
-            
+            aiIsActive = true;
         }
         protected virtual void OnDisable()
         {
@@ -135,7 +138,9 @@ namespace MAED.ActionAndStates
 
             magnitude = ReachedDestination ? 0f : aiPath.velocity.magnitude;
             anim?.SetFloat("velocity", magnitude);
-            currentState.UpdateState(this);
+
+            if (currentState != null)
+                currentState.UpdateState(this);
         }
         /// <summary>
         /// Sets the state to the specific state.
@@ -224,7 +229,7 @@ namespace MAED.ActionAndStates
             #if UNITY_EDITOR
             if (enableDebug)
             {
-                Debug.Log(name + " SetDestination to " + destination);
+                //Debug.Log(name + " SetDestination to " + destination);
             }
             #endif
 

@@ -15,7 +15,7 @@ namespace MAED.ActionAndStates
                 return;
             }
 
-            deathController.TakeNextPatrolPoint(deathController.GetClosestPatrolWaypointIndex(controller.transform.position));
+            deathController.TakeClosestPatrolPathPoint();
         }
     }
 }

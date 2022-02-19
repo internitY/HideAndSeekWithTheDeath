@@ -16,6 +16,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ff04628ac18d38c419babd890af66a8a, type: 2}
   - {fileID: 11400000, guid: f140e0e5d5749ac4caea232f418f1c47, type: 2}
   - {fileID: 11400000, guid: 2739c8fda9fc8ad46a4d0567e3e3c717, type: 2}
+  - {fileID: 11400000, guid: 622e5808f03519e4b825e31433bc8d61, type: 2}
+  - {fileID: 11400000, guid: 8f4ed438568b6244592afd7776fd86cf, type: 2}
   Actions:
   - {fileID: 11400000, guid: 4f737698fce8f264284f2f07ce585fa6, type: 2}
   Transitions:
@@ -23,4 +25,4 @@ MonoBehaviour:
     TrueState: {fileID: 11400000, guid: 040a3470b045edd49a4aae931b939458, type: 2}
     FalseState: {fileID: 11400000, guid: 40b9aebb91d11a0438639f979feb278c, type: 2}
   StartExitEvents: []
-  SceneGizmoColor: {r: 0, g: 0.89979386, b: 0.990566, a: 1}
+  SceneGizmoColor: {r: 0, g: 0.8098134, b: 0.99215686, a: 1}
