@@ -982,7 +982,7 @@ MonoBehaviour:
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 4096
   endReachedDistance: 0.1
   whenCloseToDestination: 0
   rvoDensityBehavior:
@@ -2246,7 +2246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAAIIeyuGHSu3gEAAMQDAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1U8lu2zAQ/RVD57aQZHdRj1WM9FDbhZRDkKKHMTmSiFCky8V2bPjfy9HiBUlOFN/Me8N5MzpGrAEDzKEpgAtvo++T+NPnD5OIaeW0NwvYz43RJuApoShlKQ54TtuBfIa1xJ8o6sYNWSOYS9Guz6kt7EupN8Sdxv19zmv8hap2DTE7UKgCa6HVUGUaMOTCafMgJA5gkn4LsBuAx1fI0xnxFolHbTnjMSAGJW5BuXsDm6b0pgKGC81JNrrTS+0K/OeFwYhywQZjgmCupRQcDelUIC1eBxdom5sKY+ABjQGh3ooYvGawQb4Y43foQEjqojfKPofv4yTagvSdAVk6OVHDUC/64J+/dO0LltBuzl6RgUY7cMHTXmRPEwnoy3Ae6OzkKm0Y8h/aK25zVEHuNSN5lzEUHPKTOB4p6ViFsI5mG70j21beSaHw4gQFlmEauVYKGb3Z3gaJNUztElAIBq0rw8GalZIvj09Xg0JFu7iEbRu4uXdOqPrCrb3gt+ZG07Rax1+SOMF0lmXp+iOLk2z2FViVzdIs4WnUNSGUcALk76Av3Whm2O+rgStoO8UCWRjtpNs5WixuYHcvDq2+6k6oSpcsLIZa9Rrj+21YCZDBXD7vfoQSuxaIGh1P0ek/UEsDBBQAAAgIAAAIIezcA7vWbwAAAHoAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz1jOx0FFQSi9KLMgoBooYgjilmSkgdrSSsVFakoGZoYFhqpGJpaVRkm6ygaGliXlicpqliZGlYYqRUixQfUllQapfYm4qRE9AYklGWmZeSmZeul5QanJicYk7yHCl2FoAUEsBAi0AFAAACAgAAAgh7K4YdK7eAQAAxAMAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAAgh7NwDu9ZvAAAAegAAAAkAJAAAAAAAAAAAAAAAKwIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAADlAgAAAAA=
+    dataString: UEsDBBQAAAgIAAAIIew9f2M74AEAAMYDAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1U8tu2zAQ/BVD56aQZLe1e6xipIfaLqQcggQ9rMmVRIQiXT5sx4b/vVw9/ECaE8XZnVnu7OoYsRoMMIcmBy68jb6P4s9fPo0ippXT3ixgPzdGm4CnhKKUhTjgOW0H8hXWEn+iqGrXZw1gJkWzPqc2sC+k3hB3HHf3Oa/wF6rK1cRsQaFyrIRWfZVxwJALp82jkNiDSToNsOuBp3fI8xnxFolHbTnjMSAGJW5BuQcDm7rwpgSGC81JNrrXS+1y/OuFwYhywQZjgmCmpRQcDemUIC1eBxdo65sKQ+ARjQGh/hcxeM1gvXw+xO/RgZDURWeUfQ3fx1G0Bek7A9LpdHSilqFadOGXP3TtShbQbM5ukYVGO3DB1U5mTzMJ6Ft/Huhs5UptGPIf2ituM1RB7j0j+ZDRF+zzkzgeKOlQhbCWZmu9I+NW3kmh8OIFBZZhHplWChm92d4GidXP7RJQCAatK8LB6pWSb0/PV6NCRdu4hG0TuJl3Tqjqwq284Lf2RuO0XMdfkzjBdDKbpes7FiezyTdg5WySzhKeRm0TQgknQP4O+tINZoYNvxq5gqZVzJGF4Y7araPV4gZ2D+LQ6KvuhCp1wcJqqFWnMbzfhqUAGczl8/ZXKLBtgajR8RSd/gFQSwMEFAAACAgAAAgh7NwDu9ZvAAAAegAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPWM7HQUVBKL0osyCgGihiCOKWZKSB2tJKxUVqSgZmhgWGqkYmlpVGSbrKBoaWJeWJymqWJkaVhipFSLFB9SWVBql9ibipET0BiSUZaZl5KZl66XlBqcmJxiTvIcKXYWgBQSwECLQAUAAAICAAACCHsPX9jO+ABAADGAwAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAACCHs3AO71m8AAAB6AAAACQAkAAAAAAAAAAAAAAAtAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAOcCAAAAAA==
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -3903,7 +3903,7 @@ MonoBehaviour:
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 4096
   endReachedDistance: 0.1
   whenCloseToDestination: 0
   rvoDensityBehavior:
@@ -4426,7 +4426,7 @@ MonoBehaviour:
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 4096
   endReachedDistance: 0.1
   whenCloseToDestination: 0
   rvoDensityBehavior:
@@ -6086,7 +6086,7 @@ MonoBehaviour:
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 4096
   endReachedDistance: 0.1
   whenCloseToDestination: 0
   rvoDensityBehavior:
@@ -6577,7 +6577,7 @@ MonoBehaviour:
   gravity: {x: NaN, y: NaN, z: NaN}
   groundMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 4096
   endReachedDistance: 0.1
   whenCloseToDestination: 0
   rvoDensityBehavior:
