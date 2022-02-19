@@ -22,33 +22,50 @@ public class LightInteract : MonoBehaviour, IInteractable
         pointLight.color = Color.blue;
         particleSystemShock.Play();
 
-        Debug.LogError("Do the LightAction Explosion");
 
-        RaycastHit[] hits = Physics.SphereCastAll(spherecastStart.position, spherecastRadius, Vector3.down, 3, deathPlayerMask);
+        StartCoroutine(ShockTimer());
 
-        foreach (var shocked in hits)
-        {
-            if (shocked.collider.gameObject.CompareTag("Player"))
-            {
-                Debug.Log("Got Hit");
-            }
-            else if (shocked.collider.gameObject.CompareTag("TheDeath"))
-            {
-                shocked.collider.GetComponent<PlugableStateController>().IsActive = false;
-                //StartCoroutine(StunTimer(shocked.collider.GetComponent<PlugableStateController>()));
-            }
-        }
-        gameObject.SetActive(false);
+        
+        
 
-        //TODO
-        //DeactivateInteract
-        //ShockReaper If in Range
     }
+
+    private IEnumerator ShockTimer()
+    {
+        float timer = 5f;
+
+        while(timer > 0)
+        {
+            RaycastHit[] hits = Physics.SphereCastAll(spherecastStart.position, spherecastRadius, Vector3.down, 3, deathPlayerMask);
+            foreach (var shocked in hits)
+            {
+                if (shocked.collider.gameObject.CompareTag("Player"))
+                {
+                    Debug.Log("Got Hit");
+                }
+                else if (shocked.collider.gameObject.CompareTag("TheDeath"))
+                {
+                    //shocked.collider.GetComponent<PlugableStateController>().IsActive = false;
+                    StartCoroutine(StunTimer(shocked.collider.GetComponent<PlugableStateController>()));
+                }
+            }
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        yield return new WaitForSeconds(2f);
+        gameObject.SetActive(false);
+    }
+
 
     private IEnumerator StunTimer(PlugableStateController enemy)
     {
-        enemy.IsActive = false;
-        yield return new WaitForSeconds(5f);
-        enemy.IsActive = true;
+        if (enemy.IsActive)
+        {
+            enemy.IsActive = false;
+            yield return new WaitForSeconds(1f);
+            enemy.IsActive = true;
+            Debug.Log(enemy.IsActive);
+        }
+        yield return null;
     }
 }
