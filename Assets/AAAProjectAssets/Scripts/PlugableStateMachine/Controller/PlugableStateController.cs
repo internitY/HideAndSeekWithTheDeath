@@ -54,10 +54,10 @@ namespace MAED.ActionAndStates
 
         public bool IsActive
         {
-            get => IsActive;
+            get => aiIsActive;
             set
             {
-                IsActive = value;
+                aiIsActive = value;
 
                 if (!IsActive)
                     StopMovement();
