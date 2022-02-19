@@ -10,4 +10,9 @@ public class ReaperSpawnManager : MonoBehaviour
 
     [SerializeField]
     private Transform[] spawnpoints;
+
+    public void SpawnReaper()
+    {
+        Debug.LogError("Spawn Reaper here");
+    }
 }

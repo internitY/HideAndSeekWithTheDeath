@@ -1374,6 +1374,7 @@ GameObject:
   - component: {fileID: 479899968}
   - component: {fileID: 479899969}
   - component: {fileID: 479899970}
+  - component: {fileID: 479899971}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1440,6 +1441,8 @@ MonoBehaviour:
   collectableName: Shards
   collectCount: 0
   unlockAtCount: 01000000010000000300000004000000
+  reaperPrefab: {fileID: 0}
+  reaperSpawnAt: 2
 --- !u!114 &479899969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1478,6 +1481,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infoText: {fileID: 1643561949}
+--- !u!114 &479899971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479899964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b13b2e139875ed148a78f24ed851f753, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &481376262
 GameObject:
   m_ObjectHideFlags: 0
