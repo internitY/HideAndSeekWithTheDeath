@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - TheDeath
+  - Light
+  - Bed
   layers:
   - Default
   - TransparentFX
@@ -12,11 +14,11 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
-  - VisionBlocker
   - Player
-  - TheDeath
+  - Death
   - Interactable
+  - 
+  - 
   - 
   - 
   - 

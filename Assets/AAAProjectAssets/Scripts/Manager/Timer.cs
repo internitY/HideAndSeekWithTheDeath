@@ -14,11 +14,20 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private bool timerIsRunning = true;
 
+    [SerializeField]
+    private float deathStartTime = 20;
+    private float deathstartsAt;
+    private bool deathStarted;
+
+    //[SerializeField]
+    
+
     private GameOver gameOver;
 
     private void Start()
     {
         gameOver = GetComponent<GameOver>();
+        deathstartsAt = remainingTime - deathStartTime;
     }
 
 
@@ -34,6 +43,12 @@ public class Timer : MonoBehaviour
         if (timerIsRunning)
         {
             remainingTime -= Time.deltaTime;
+
+            if((remainingTime < deathstartsAt) && !deathStarted)
+            {
+                deathStarted = true;
+                Debug.LogError("Start Death here");
+            }
 
             CheckDisplay();
         }
