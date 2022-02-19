@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MAED.ActionAndStates;
 
 public class AbilityManager : MonoBehaviour
 {
@@ -17,6 +18,16 @@ public class AbilityManager : MonoBehaviour
     [SerializeField]
     private Ability[] abilities;
 
+    [SerializeField]
+    private PlugableStateController playerController;
+
+    [SerializeField]
+    private float sprintSpeed = 10f;
+    [SerializeField]
+    private float sprintDuration = 2f;
+
+    private float oldSpeed;
+
     private int activeAbility;
 
     public bool waitForWinState;
@@ -30,12 +41,16 @@ public class AbilityManager : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        oldSpeed = playerController.RichAI.maxSpeed;
+    }
     private void OnEnable()
     {
         playerInput.Enable();
         playerInput.Player.MousePosition.performed += context => mousePosition = context.ReadValue<Vector2>();
         playerInput.Player.Ability1.performed += context => CheckAbility(0);
-        playerInput.Player.Ability2.performed += context => CheckAbility(1);
+        playerInput.Player.Ability2.performed += context => SprintAbility();//CheckAbility(1);
         playerInput.Player.Ability3.performed += context => CheckAbility(2);
         playerInput.Player.Ability4.performed += context => CheckAbility(3);
         playerInput.Player.Primary.performed += context => OnPrimaryStarted();
@@ -50,7 +65,13 @@ public class AbilityManager : MonoBehaviour
     #region AbilityUse
 
     private void OnPrimaryStarted()
+
     {
+        if (waitForWinState)
+        {
+            winInteractable.CancelWaitForWin();
+        }
+
         if (activeAbility == -1)
             return;
         //Click on Object of current Ability
@@ -58,6 +79,11 @@ public class AbilityManager : MonoBehaviour
         //Debug.Log(interactable);
         if(interactable != null)
             abilities[activeAbility].UseAbility(interactable);
+
+        foreach (var item in abilities)
+        {
+            item.InActiveState();
+        }
 
     }
 
@@ -67,6 +93,12 @@ public class AbilityManager : MonoBehaviour
     {
         //CancelAbility use
         activeAbility = -1;
+        if (waitForWinState)
+        {
+            winInteractable.CancelWaitForWin();
+        }
+
+
     }
 
     #endregion AbilityUse
@@ -99,9 +131,19 @@ public class AbilityManager : MonoBehaviour
 
     private void CheckAbility(int index)
     {
+        if (waitForWinState)
+        {
+            winInteractable.CancelWaitForWin();
+        }
+
+        foreach (var item in abilities)
+        {
+            item.InActiveState();
+        }
         if (abilities[index].IsUnlocked())
         {
             activeAbility = index;
+            abilities[index].ActiveState();
             Debug.Log("Active Ability: " + index);
         }
         else
@@ -109,5 +151,23 @@ public class AbilityManager : MonoBehaviour
             index = -1;
         }
     }
+    private void SprintAbility()
+    {
+        if(abilities[1].IsUnlocked() && !abilities[1].OnCooldown())
+        {
+            abilities[1].ActiveState();
+            abilities[1].Sprint();
+            StartCoroutine(Sprint());
+            activeAbility = -1;
+        }
+        
+    }
 
+    private IEnumerator Sprint()
+    {
+        playerController.RichAI.maxSpeed = sprintSpeed;
+        yield return new WaitForSeconds(sprintDuration);
+        playerController.RichAI.maxSpeed = oldSpeed;
+        abilities[1].InActiveState();
+    }
 }
