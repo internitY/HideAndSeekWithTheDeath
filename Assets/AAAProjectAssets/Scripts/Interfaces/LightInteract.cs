@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MAED.ActionAndStates;
 
 public class LightInteract : MonoBehaviour, IInteractable
 {
@@ -33,7 +34,8 @@ public class LightInteract : MonoBehaviour, IInteractable
             }
             else if (shocked.collider.gameObject.CompareTag("TheDeath"))
             {
-                Debug.Log("Stun Death or respawn him?");
+                shocked.collider.GetComponent<PlugableStateController>().IsActive = false;
+                //StartCoroutine(StunTimer(shocked.collider.GetComponent<PlugableStateController>()));
             }
         }
         gameObject.SetActive(false);
@@ -41,5 +43,12 @@ public class LightInteract : MonoBehaviour, IInteractable
         //TODO
         //DeactivateInteract
         //ShockReaper If in Range
+    }
+
+    private IEnumerator StunTimer(PlugableStateController enemy)
+    {
+        enemy.IsActive = false;
+        yield return new WaitForSeconds(5f);
+        enemy.IsActive = true;
     }
 }
