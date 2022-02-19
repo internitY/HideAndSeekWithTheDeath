@@ -910,6 +910,7 @@ GameObject:
   - component: {fileID: 364468600}
   - component: {fileID: 364468599}
   - component: {fileID: 364468598}
+  - component: {fileID: 364468604}
   m_Layer: 7
   m_Name: TheDeath_Randomer (1)
   m_TagString: TheDeath
@@ -952,6 +953,8 @@ MonoBehaviour:
   isHiding: 0
   magnitude: 0
   chaseTarget: {fileID: 0}
+  lastTargetPosition: {x: 0, y: 0, z: 0}
+  lastTargetDirection: {x: 0, y: 0, z: 0}
   eventTime: 0
   enableDebug: 0
   patrolType: 0
@@ -1088,6 +1091,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &364468604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364468597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560112f876f5746c780eca0d404e7139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 2
+  radiusBackingField: 0.5
+  heightBackingField: 2
+  centerBackingField: 1
+  locked: 0
+  lockWhenNotMoving: 0
+  agentTimeHorizon: 2
+  obstacleTimeHorizon: 0.5
+  maxNeighbours: 10
+  layer: 1
+  collidesWith: -1
+  wallAvoidForce: 1
+  wallAvoidFalloff: 1
+  priority: 0.5
+  debug: 0
 --- !u!1 &376855176
 GameObject:
   m_ObjectHideFlags: 0
@@ -2225,6 +2255,7 @@ GameObject:
   m_Component:
   - component: {fileID: 589315197}
   - component: {fileID: 589315196}
+  - component: {fileID: 589315198}
   m_Layer: 0
   m_Name: AstarPathfinding
   m_TagString: Untagged
@@ -2302,6 +2333,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &589315198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589315195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1764de1de43cc4d19af52679d3eaae06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  desiredSimulationFPS: 200
+  workerThreads: 2
+  doubleBuffering: 0
+  hardCollisions: 1
+  symmetryBreakingBias: 0.1
+  movementPlane: 0
+  drawObstacles: 0
 --- !u!1 &662439504
 GameObject:
   m_ObjectHideFlags: 0
@@ -3859,6 +3910,7 @@ GameObject:
   - component: {fileID: 1280617430}
   - component: {fileID: 1280617429}
   - component: {fileID: 1280617432}
+  - component: {fileID: 1280617435}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -3996,6 +4048,8 @@ MonoBehaviour:
   isHiding: 0
   magnitude: 0
   chaseTarget: {fileID: 0}
+  lastTargetPosition: {x: 0, y: 0, z: 0}
+  lastTargetDirection: {x: 0, y: 0, z: 0}
   eventTime: 0
   enableDebug: 0
 --- !u!54 &1280617433
@@ -4028,6 +4082,33 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1280617435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280617427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560112f876f5746c780eca0d404e7139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 2
+  radiusBackingField: 0.5
+  heightBackingField: 2
+  centerBackingField: 1
+  locked: 0
+  lockWhenNotMoving: 0
+  agentTimeHorizon: 1
+  obstacleTimeHorizon: 0.2
+  maxNeighbours: 10
+  layer: 1
+  collidesWith: -1
+  wallAvoidForce: 1
+  wallAvoidFalloff: 1
+  priority: 1
+  debug: 0
 --- !u!1 &1284202387
 GameObject:
   m_ObjectHideFlags: 0
@@ -4399,6 +4480,7 @@ GameObject:
   - component: {fileID: 1432210068}
   - component: {fileID: 1432210067}
   - component: {fileID: 1432210073}
+  - component: {fileID: 1432210074}
   m_Layer: 7
   m_Name: TheDeath_Randomer
   m_TagString: TheDeath
@@ -4567,6 +4649,8 @@ MonoBehaviour:
   isHiding: 0
   magnitude: 0
   chaseTarget: {fileID: 0}
+  lastTargetPosition: {x: 0, y: 0, z: 0}
+  lastTargetDirection: {x: 0, y: 0, z: 0}
   eventTime: 0
   enableDebug: 0
   patrolType: 0
@@ -4577,6 +4661,33 @@ MonoBehaviour:
   eyeImage: {fileID: 1872916033}
   wanderColor: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 1}
   chaseColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &1432210074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432210066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560112f876f5746c780eca0d404e7139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 2
+  radiusBackingField: 0.5
+  heightBackingField: 2
+  centerBackingField: 1
+  locked: 0
+  lockWhenNotMoving: 0
+  agentTimeHorizon: 2
+  obstacleTimeHorizon: 0.5
+  maxNeighbours: 10
+  layer: 1
+  collidesWith: -1
+  wallAvoidForce: 1
+  wallAvoidFalloff: 1
+  priority: 0.5
+  debug: 0
 --- !u!1 &1447484784
 GameObject:
   m_ObjectHideFlags: 0
@@ -5376,6 +5487,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1849944966}
     m_Modifications:
+    - target: {fileID: 107974, guid: 7b81343ebd645d9429b0f18f7440e5d8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 151544, guid: 7b81343ebd645d9429b0f18f7440e5d8, type: 3}
       propertyPath: m_Name
       value: F_nun
@@ -5435,6 +5550,18 @@ PrefabInstance:
     - target: {fileID: 419434, guid: 7b81343ebd645d9429b0f18f7440e5d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 420936, guid: 7b81343ebd645d9429b0f18f7440e5d8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 429022, guid: 7b81343ebd645d9429b0f18f7440e5d8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 429022, guid: 7b81343ebd645d9429b0f18f7440e5d8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 89.99992
       objectReference: {fileID: 0}
     - target: {fileID: 9593672, guid: 7b81343ebd645d9429b0f18f7440e5d8, type: 3}
       propertyPath: m_Controller
@@ -6010,13 +6137,14 @@ GameObject:
   - component: {fileID: 1870233422}
   - component: {fileID: 1870233421}
   - component: {fileID: 1870233420}
+  - component: {fileID: 1870233426}
   m_Layer: 7
   m_Name: TheDeath_Patroler
   m_TagString: TheDeath
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1870233420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6032,7 +6160,7 @@ MonoBehaviour:
   aiIsActive: 1
   blockWhilePathCalculating: 1
   currentState: {fileID: 0}
-  chaseState: {fileID: 11400000, guid: ba4e56352cf33004fb83921e7d359ea2, type: 2}
+  chaseState: {fileID: 11400000, guid: 040a3470b045edd49a4aae931b939458, type: 2}
   interactState: {fileID: 11400000, guid: de00605f6e59c9949a7a68a9b7a0eb96, type: 2}
   resetstate: {fileID: 11400000, guid: d7c4c7962c31ebe458e12b4fd113d946, type: 2}
   remainState: {fileID: 11400000, guid: 40b9aebb91d11a0438639f979feb278c, type: 2}
@@ -6052,6 +6180,8 @@ MonoBehaviour:
   isHiding: 0
   magnitude: 0
   chaseTarget: {fileID: 0}
+  lastTargetPosition: {x: 0, y: 0, z: 0}
+  lastTargetDirection: {x: 0, y: 0, z: 0}
   eventTime: 0
   enableDebug: 0
   patrolType: 1
@@ -6192,6 +6322,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1870233426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870233419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560112f876f5746c780eca0d404e7139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 2
+  radiusBackingField: 0.5
+  heightBackingField: 2
+  centerBackingField: 1
+  locked: 0
+  lockWhenNotMoving: 0
+  agentTimeHorizon: 2
+  obstacleTimeHorizon: 0.5
+  maxNeighbours: 10
+  layer: 1
+  collidesWith: -1
+  wallAvoidForce: 1
+  wallAvoidFalloff: 1
+  priority: 0.5
+  debug: 0
 --- !u!1 &1872402350
 GameObject:
   m_ObjectHideFlags: 0
@@ -6503,6 +6660,7 @@ GameObject:
   - component: {fileID: 1898426582}
   - component: {fileID: 1898426581}
   - component: {fileID: 1898426580}
+  - component: {fileID: 1898426586}
   m_Layer: 7
   m_Name: TheDeath_Patroler (1)
   m_TagString: TheDeath
@@ -6525,7 +6683,7 @@ MonoBehaviour:
   aiIsActive: 1
   blockWhilePathCalculating: 1
   currentState: {fileID: 0}
-  chaseState: {fileID: 11400000, guid: ba4e56352cf33004fb83921e7d359ea2, type: 2}
+  chaseState: {fileID: 11400000, guid: 040a3470b045edd49a4aae931b939458, type: 2}
   interactState: {fileID: 11400000, guid: de00605f6e59c9949a7a68a9b7a0eb96, type: 2}
   resetstate: {fileID: 11400000, guid: d7c4c7962c31ebe458e12b4fd113d946, type: 2}
   remainState: {fileID: 11400000, guid: 40b9aebb91d11a0438639f979feb278c, type: 2}
@@ -6545,8 +6703,10 @@ MonoBehaviour:
   isHiding: 0
   magnitude: 0
   chaseTarget: {fileID: 0}
+  lastTargetPosition: {x: 0, y: 0, z: 0}
+  lastTargetDirection: {x: 0, y: 0, z: 0}
   eventTime: 0
-  enableDebug: 0
+  enableDebug: 1
   patrolType: 2
   patrolWaypoints:
   - {fileID: 691359718}
@@ -6683,6 +6843,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1898426586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898426579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560112f876f5746c780eca0d404e7139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 2
+  radiusBackingField: 0.5
+  heightBackingField: 2
+  centerBackingField: 1
+  locked: 0
+  lockWhenNotMoving: 0
+  agentTimeHorizon: 2
+  obstacleTimeHorizon: 0.5
+  maxNeighbours: 10
+  layer: 1
+  collidesWith: -1
+  wallAvoidForce: 1
+  wallAvoidFalloff: 1
+  priority: 0.5
+  debug: 0
 --- !u!1 &1902915580
 GameObject:
   m_ObjectHideFlags: 0

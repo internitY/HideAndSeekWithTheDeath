@@ -12,8 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d260da0337d9f45a8d083760e4f6a3, type: 3}
   m_Name: DeathSearchState
   m_EditorClassIdentifier: 
-  StartEnterEvents: []
-  Actions: []
-  Transitions: []
+  StartEnterEvents:
+  - {fileID: 11400000, guid: f140e0e5d5749ac4caea232f418f1c47, type: 2}
+  - {fileID: 11400000, guid: ff04628ac18d38c419babd890af66a8a, type: 2}
+  - {fileID: 11400000, guid: c82d3e67a31a8e944a9b30c4988df04c, type: 2}
+  Actions:
+  - {fileID: 11400000, guid: 61fed130e55fc0f4985fdfd3e878e998, type: 2}
+  Transitions:
+  - Decision: {fileID: 11400000, guid: 7343d0935ea8f7c4cae9c5cf4c222070, type: 2}
+    TrueState: {fileID: 11400000, guid: 040a3470b045edd49a4aae931b939458, type: 2}
+    FalseState: {fileID: 11400000, guid: 40b9aebb91d11a0438639f979feb278c, type: 2}
   StartExitEvents: []
-  SceneGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  SceneGizmoColor: {r: 1, g: 0, b: 0.96229744, a: 1}

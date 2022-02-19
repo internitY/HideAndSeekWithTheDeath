@@ -15,6 +15,8 @@ namespace MAED.ActionAndStates
             if (Vector3.Distance(controller.transform.position, controller.ChaseTarget.transform.position) < controller.VisionRadius)
             {
                 controller.SetDestination(controller.ChaseTarget.transform.position);
+                controller.LastTargetPosition = controller.ChaseTarget.transform.position;
+                controller.LastTargetDirection = controller.ChaseTarget.transform.forward;
             }
             else
             {
