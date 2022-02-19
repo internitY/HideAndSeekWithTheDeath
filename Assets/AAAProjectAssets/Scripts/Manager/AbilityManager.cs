@@ -19,10 +19,15 @@ public class AbilityManager : MonoBehaviour
 
     private int activeAbility;
 
+    public bool waitForWinState;
+
+    public BedInteractable winInteractable;
+
     private void Awake()
     {
         if (playerInput == null)
             playerInput = new PlayerControls();
+
     }
 
     private void OnEnable()
@@ -97,6 +102,7 @@ public class AbilityManager : MonoBehaviour
         if (abilities[index].IsUnlocked())
         {
             activeAbility = index;
+            Debug.Log("Active Ability: " + index);
         }
         else
         {
