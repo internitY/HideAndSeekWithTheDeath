@@ -5,38 +5,30 @@ namespace MAED.ActionAndStates
     [CreateAssetMenu(menuName = "MAED/PlugableStateMachine/Actions/Patrol")]
     public class PatrolAction : Action
     {
+        [SerializeField] private float nextPatrolPointDelay = 2f;
         public override void Act(PlugableStateController controller)
         {
             Patrol(controller);
         }
         private void Patrol(PlugableStateController controller)
         {
-            /*
             if (controller.ReachedDestination)
             {
-                //check if ai follows path forward or backwards
-                if (controller.moveForward)
+                DeathPlugableStateController deathController = controller as DeathPlugableStateController;
+                if (deathController != null)
                 {
-                    controller.nextWaypoint++;
-
-                    if (controller.nextWaypoint > controller.waypoints.Count - 1)
+                    if (controller.CheckIfEventTimeElapsed(nextPatrolPointDelay))
                     {
-                        controller.moveForward = false;
+                        //check if ai follows path forward or backwards
+                        deathController.TakeNextPatrolPoint();
+                        deathController.ResetEventTime();
                     }
                 }
                 else
                 {
-                    controller.nextWaypoint--;
-
-                    if (controller.nextWaypoint <= 0)
-                    {
-                        controller.moveForward = true;
-                    }
+                    Debug.LogWarning("Patrolling not allowed for non-deathplugablestatecontrollers yet.");
                 }
-
-                controller.SetDestination(controller.waypoints[controller.nextWaypoint]);
             }
-             */
         }
     }
 }

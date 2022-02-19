@@ -5,6 +5,7 @@ namespace MAED.ActionAndStates
     [CreateAssetMenu(menuName = "MAED/PlugableStateMachine/Actions/Wander")]
     public class WanderAction : Action
     {
+        [SerializeField] private float nextPointDelay = 1f;
         public override void Act(PlugableStateController controller)
         {
             Wander(controller);
@@ -13,7 +14,11 @@ namespace MAED.ActionAndStates
         {
             if (controller.ReachedDestination)
             {
-                controller.SetDestination(NextRandomWaypoint(controller));
+                if (controller.CheckIfEventTimeElapsed(nextPointDelay))
+                {
+                    controller.SetDestination(NextRandomWaypoint(controller));
+                    controller.ResetEventTime();
+                }
             }
         }
         private Vector3 NextRandomWaypoint(PlugableStateController controller)

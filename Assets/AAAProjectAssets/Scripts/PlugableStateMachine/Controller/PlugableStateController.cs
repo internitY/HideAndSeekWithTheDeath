@@ -23,9 +23,10 @@ namespace MAED.ActionAndStates
 
         [HideInInspector] public Collider[] nearCols;
 
-        [Header("Entity Values")] 
-        [SerializeField, Range(5f, 30f)] private float visionRadius = 10f;
-        [SerializeField, Range(0f, 360f)] private float visionAngle = 360f;
+        [Header("Entity Values")]
+        [SerializeField, Range(1f, 5f)] private float attackRadius = 2f;
+        [SerializeField, Range(1f, 30f)] private float visionRadius = 10f;
+        [SerializeField, Range(10f, 360f)] private float visionAngle = 360f;
         [SerializeField, Range(1f, 10f)] private float overallAttractRadius = 3f;
 
         [SerializeField] private LayerMask enemyMask;
@@ -38,7 +39,7 @@ namespace MAED.ActionAndStates
         [SerializeField, ShowOnly] protected float magnitude;
         private Path path;
 
-        [Header("Target References")] 
+        [Header("Target References")]
         [SerializeField, ShowOnly] protected PlugableStateController chaseTarget;
 
         [Header("Timers")] 
@@ -51,15 +52,22 @@ namespace MAED.ActionAndStates
         public bool IsDead
         {
             get => isDead;
-            set => isDead = value;
+            set
+            {
+                isDead = value;
+            }
         }
         public bool IsHiding
         {
             get => isHiding;
-            set => isHiding = value;
+            set
+            {
+                isHiding = value;
+            }
         }
         public RichAI RichAI => aiPath;
         public PlugableStateController ChaseTarget => chaseTarget;
+        public float AttackRadius => attackRadius;
         public float VisionRadius => visionRadius;
         public float OverallAttractRadius => overallAttractRadius;
         public LayerMask EnemyMask => enemyMask;
@@ -101,7 +109,7 @@ namespace MAED.ActionAndStates
                 return;
 
             magnitude = ReachedDestination ? 0f : aiPath.velocity.magnitude;
-            anim?.SetFloat("velocity", magnitude * 0.5f);
+            anim?.SetFloat("velocity", magnitude);
             currentState.UpdateState(this);
         }
         /// <summary>
@@ -115,7 +123,7 @@ namespace MAED.ActionAndStates
                 #if UNITY_EDITOR
                 if (enableDebug)
                 {
-                    Debug.LogWarning(name + " SetToState returned.");
+                    //Debug.LogWarning(name + " SetToState returned.");
                 }
                 #endif
                 return;
@@ -226,75 +234,37 @@ namespace MAED.ActionAndStates
         #region target chasing
         public bool TargetIsInsideVisionAngle(Vector3 queryPosition, bool igoreY = true)
         {
+            if (visionAngle <= 0f || visionAngle >= 360f)
+                return true;
+
             if (igoreY)
                 queryPosition.y = 0;
 
             Vector3 targetVector = (queryPosition - transform.position).normalized;
             float angle = Vector3.Angle(transform.forward, targetVector);
-
             return angle <= visionAngle * 0.5f;
         }
-
         public void SetChaseTarget(PlugableStateController target)
         {
             chaseTarget = target;
+            OnChaseTargetSet(chaseTarget);
 
-            if (target != null)
+            if (enableDebug)
             {
-                SetDestination(target.transform.position);
-
-                if (enableDebug)
-                {
-                    Debug.Log(name + " set chase target to " + target.name);
-                }
-            }
-            else
-            {
-                StartCoroutine(LoseTargetFocus());
-
-                if (enableDebug)
-                {
-                    Debug.Log(name + " set chase target to null.");
-                }
-            }
-        }
-
-        private IEnumerator GetTargetFocus(PlugableStateController target)
-        {
-            float currentTime = 1f;
-
-            while (currentTime > 0f)
-            {
-                currentTime -= Time.deltaTime;
-
                 if (chaseTarget == null)
-                {
-                    yield break;
-                }
-
-                yield return null;
+                    Debug.Log(name + " set chase target to null.");
+                else
+                    Debug.Log(name + " set chase target to " + target.name);
             }
-
+        }
+        public virtual void OnChaseTargetSet(PlugableStateController target)
+        {
 
         }
 
-        private IEnumerator LoseTargetFocus()
+        public void TakeDamage(PlugableStateController attacker)
         {
-            float currentTime = 2f;
-
-            while (currentTime > 0f)
-            {
-                currentTime -= Time.deltaTime;
-
-                if (chaseTarget != null)
-                {
-                    yield break;
-                }
-
-                yield return null;
-            }
-
-            chaseTarget = null;
+            Debug.Log(name + " get attacked by " + attacker.name);
         }
         #endregion target chasing
 
