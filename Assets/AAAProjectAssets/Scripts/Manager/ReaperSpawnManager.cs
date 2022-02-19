@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ReaperSpawnManager : MonoBehaviour
 {
+    [SerializeField][Tooltip("DebugOnly")]
+    private bool disableSpawn;
 
     [SerializeField]
     private GameObject reaperPrefab;
@@ -11,8 +13,22 @@ public class ReaperSpawnManager : MonoBehaviour
     [SerializeField]
     private Transform[] spawnpoints;
 
+    [SerializeField]
+    private Transform firstSpawnPoint;
+
+    public void SpawnFirstReaper()
+    {
+        if (disableSpawn)
+            return;
+        Instantiate(reaperPrefab, firstSpawnPoint.position, Quaternion.identity);
+    }
+
     public void SpawnReaper()
     {
-        Debug.LogError("Spawn Reaper here");
+        if (disableSpawn)
+            return;
+        Instantiate(reaperPrefab, spawnpoints[(int)Random.Range(0,spawnpoints.Length)].position, Quaternion.identity);
     }
+
+
 }

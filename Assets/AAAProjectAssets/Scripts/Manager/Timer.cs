@@ -49,7 +49,7 @@ public class Timer : MonoBehaviour
             if((remainingTime < deathstartsAt) && !deathStarted)
             {
                 deathStarted = true;
-                reaperSpawnManager.SpawnReaper();
+                reaperSpawnManager.SpawnFirstReaper();
             }
 
             CheckDisplay();
