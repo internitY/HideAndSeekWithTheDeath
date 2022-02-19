@@ -33,31 +33,30 @@ namespace MAED.ActionAndStates
 
                     if (controller.nearCols[i].TryGetComponent(out PlugableStateController enemyController))
                     {
-                        if (Physics.Linecast(controller.Eye.position, controller.nearCols[i].ClosestPoint(controller.Eye.position), out RaycastHit info,
+                        if (Physics.Linecast(controller.Eye.position, enemyController.Eye.position, out RaycastHit info,
                             controller.VisionBlockMask, QueryTriggerInteraction.Ignore))
                         {
                             //Debug.Log("Enemy |" + enemyController.name + "| Vision blocked by " + info.transform.name);
+                            continue;
+                        }
+
+                        float dist = Vector3.Distance(controller.transform.position, enemyController.transform.position);
+
+                        if (dist < controller.OverallAttractRadius)
+                        {
+                            target = enemyController;
+                            Debug.Log("Target " + enemyController.transform.name + " is in short range overall attract range.");
                         }
                         else
                         {
-                            float dist = Vector3.Distance(controller.transform.position, enemyController.transform.position);
-
-                            if (dist < controller.OverallAttractRadius)
+                            if (controller.TargetIsInsideVisionAngle(enemyController.transform.position))
                             {
                                 target = enemyController;
-                                Debug.Log("Target " + enemyController.transform.name + " is in short range overall attract range.");
+                                Debug.Log("Target " + enemyController.transform.name + " inside the vision angle.");
                             }
                             else
                             {
-                                if (controller.TargetIsInsideVisionAngle(enemyController.transform.position))
-                                {
-                                    target = enemyController;
-                                    Debug.Log("Target " + enemyController.transform.name + " inside the vision angle.");
-                                }
-                                else
-                                {
-                                    Debug.Log("Target " + enemyController.transform.name + " is NOT inside the vision angle.");
-                                }
+                                Debug.Log("Target " + enemyController.transform.name + " is NOT inside the vision angle.");
                             }
                         }
                     }

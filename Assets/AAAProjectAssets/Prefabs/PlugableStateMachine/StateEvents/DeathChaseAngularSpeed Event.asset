@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e641ce5d302da34ca1f4c22358d34bc, type: 3}
   m_Name: DeathChaseAngularSpeed Event
   m_EditorClassIdentifier: 
-  angularSpeed: 120
+  angularSpeed: 180

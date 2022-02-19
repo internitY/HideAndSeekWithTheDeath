@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3994373150202096857}
   - component: {fileID: 2286124830816556435}
   - component: {fileID: 3358638908058792199}
-  - component: {fileID: 2377431062484031122}
+  - component: {fileID: 2032172113833981844}
   m_Layer: 13
   m_Name: default
   m_TagString: Untagged
@@ -85,7 +85,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
+  m_StaticShadowCaster: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -94,7 +94,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3033667219593020291, guid: 9e09593cb9203794390e7ca8ba7a1d2a, type: 3}
+  - {fileID: 2100000, guid: fccba1d449218354fb85389cd1d0a069, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -116,7 +116,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2377431062484031122
+--- !u!64 &2032172113833981844
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,6 +127,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 9e09593cb9203794390e7ca8ba7a1d2a, type: 3}
