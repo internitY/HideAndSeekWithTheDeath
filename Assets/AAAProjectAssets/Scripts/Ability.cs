@@ -17,6 +17,8 @@ public class Ability : MonoBehaviour
     [SerializeField]
     private float speed = 1f;
 
+    private bool multiTimeAbility;
+
     private void Start()
     {
         image = GetComponent<Image>();
@@ -42,7 +44,7 @@ public class Ability : MonoBehaviour
     }
     private void Update()
     {
-        if(isUnlocked)
+        if(isUnlocked && !multiTimeAbility)
             image.fillAmount += Time.deltaTime * speed;
     }
 
@@ -62,5 +64,21 @@ public class Ability : MonoBehaviour
     public void InActiveState()
     {
         icon.color = isUnlocked ? Color.white : Color.gray;
+        if (multiTimeAbility)
+            multiTimeAbility = false;
+    }
+    //Stuff for sprint only....
+    public bool OnCooldown()
+    {
+        if (image.fillAmount < 1)
+        {
+            return true;
+        }
+        return false;
+    }
+    public void Sprint()
+    {
+        image.fillAmount = 0;
+        multiTimeAbility = true;
     }
 }

@@ -20,6 +20,13 @@ public class CollectableManager : MonoBehaviour
     private int[] unlockAtCount;
 
     private AbilityManager abilityManager;
+    private ReaperSpawnManager reaperSpawnManager;
+
+
+    [SerializeField]
+    private int reaperSpawnAt = 2;
+    private int currentReaperSpawnCount;
+
 
     private void Awake()
     {
@@ -27,7 +34,6 @@ public class CollectableManager : MonoBehaviour
             Instance = this;
         else
         {
-
             Destroy(this);
         }
     }
@@ -38,6 +44,9 @@ public class CollectableManager : MonoBehaviour
         if (collectText != null)
             collectText.text = collectableName + ": " + collectCount;
         abilityManager = GetComponent<AbilityManager>();
+        reaperSpawnManager = GetComponent<ReaperSpawnManager>();
+
+        currentReaperSpawnCount = reaperSpawnAt;
     }
 
 
@@ -53,9 +62,13 @@ public class CollectableManager : MonoBehaviour
         {
             if(collectCount >= unlockAtCount[i])
             {
-
                 UnlockAbility(i);
             }
+        }
+        if(collectCount == currentReaperSpawnCount)
+        {
+            reaperSpawnManager.SpawnReaper();
+            currentReaperSpawnCount += reaperSpawnAt;
         }
 
     }
@@ -64,5 +77,6 @@ public class CollectableManager : MonoBehaviour
     {
         abilityManager.UnlockAbility(index);
     }
+
 
 }
