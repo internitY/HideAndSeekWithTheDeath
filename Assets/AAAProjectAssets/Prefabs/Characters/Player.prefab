@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 2399594331697491510}
   - component: {fileID: 2399594331697491519}
   - component: {fileID: 2399594331697491512}
+  - component: {fileID: 3562013243063458825}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -112,7 +113,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2399594331697491504}
-  m_LocalRotation: {x: -0, y: -0.34728745, z: -0, w: 0.93775874}
+  m_LocalRotation: {x: 0, y: -0.34728754, z: 0, w: 0.93775874}
   m_LocalPosition: {x: 20.00008, y: 0, z: -11.500047}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -215,7 +216,7 @@ MonoBehaviour:
   orientation: 0
   enableRotation: 1
   autoRepath:
-    mode: 2
+    mode: 1
     interval: 0.5
     sensitivity: 10
     maximumInterval: 2
@@ -296,6 +297,14 @@ MonoBehaviour:
   wallAvoidFalloff: 1
   priority: 1
   debug: 0
+--- !u!81 &3562013243063458825
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399594331697491504}
+  m_Enabled: 1
 --- !u!1 &2399594332293047596
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +380,54 @@ PrefabInstance:
       propertyPath: m_Name
       value: F_civilian_12
       objectReference: {fileID: 0}
+    - target: {fileID: 421144, guid: e00779cd7489ab048a33aaee2859eec6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.0000001675277
+      objectReference: {fileID: 0}
+    - target: {fileID: 421144, guid: e00779cd7489ab048a33aaee2859eec6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -0.0000011648827
+      objectReference: {fileID: 0}
+    - target: {fileID: 421144, guid: e00779cd7489ab048a33aaee2859eec6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 352.2617
+      objectReference: {fileID: 0}
+    - target: {fileID: 448900, guid: e00779cd7489ab048a33aaee2859eec6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 455744, guid: e00779cd7489ab048a33aaee2859eec6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 359.95514
+      objectReference: {fileID: 0}
+    - target: {fileID: 455744, guid: e00779cd7489ab048a33aaee2859eec6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 79.646355
+      objectReference: {fileID: 0}
+    - target: {fileID: 455744, guid: e00779cd7489ab048a33aaee2859eec6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180.00835
+      objectReference: {fileID: 0}
+    - target: {fileID: 474186, guid: e00779cd7489ab048a33aaee2859eec6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.0000011813739
+      objectReference: {fileID: 0}
+    - target: {fileID: 474186, guid: e00779cd7489ab048a33aaee2859eec6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -0.000008761803
+      objectReference: {fileID: 0}
+    - target: {fileID: 474186, guid: e00779cd7489ab048a33aaee2859eec6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 352.2617
+      objectReference: {fileID: 0}
+    - target: {fileID: 474376, guid: e00779cd7489ab048a33aaee2859eec6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 474376, guid: e00779cd7489ab048a33aaee2859eec6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 89.99992
+      objectReference: {fileID: 0}
     - target: {fileID: 494870, guid: e00779cd7489ab048a33aaee2859eec6, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -439,3 +496,107 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2399594330715360255}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2399594330715481147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 192452, guid: e00779cd7489ab048a33aaee2859eec6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2399594330715360255}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &1504245579
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399594330715481147}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1504245580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399594330715481147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ad75b5c080c5d48bd697a3aa6b249e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundSpawnMode: 1
+  footstepEvent: 2
+  footstepGroups:
+  - isExpanded: 1
+    useLayerFilter: 1
+    useTagFilter: 0
+    matchingLayers: 0c000000
+    matchingTags:
+    - Default
+    soundType: footstep_concrete_walk_22
+    variationType: 1
+    variationName: 
+    volume: 0.3
+    useFixedPitch: 0
+    pitch: 1
+    delaySound: 0
+  retriggerLimitMode: 2
+  limitPerXFrm: 0
+  limitPerXSec: 0.1
+  triggeredLastFrame: -100
+  triggeredLastTime: -100
+--- !u!1 &2399594330715506275 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 150940, guid: e00779cd7489ab048a33aaee2859eec6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2399594330715360255}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &1206723385
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399594330715506275}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1206723386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399594330715506275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ad75b5c080c5d48bd697a3aa6b249e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundSpawnMode: 1
+  footstepEvent: 2
+  footstepGroups:
+  - isExpanded: 1
+    useLayerFilter: 1
+    useTagFilter: 0
+    matchingLayers: 0c000000
+    matchingTags:
+    - Default
+    soundType: footstep_concrete_walk_22
+    variationType: 1
+    variationName: 
+    volume: 0.3
+    useFixedPitch: 0
+    pitch: 1
+    delaySound: 0
+  retriggerLimitMode: 2
+  limitPerXFrm: 0
+  limitPerXSec: 0.1
+  triggeredLastFrame: -100
+  triggeredLastTime: -100

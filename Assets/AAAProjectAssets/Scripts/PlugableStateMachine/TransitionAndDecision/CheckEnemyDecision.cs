@@ -33,6 +33,11 @@ namespace MAED.ActionAndStates
 
                     if (controller.nearCols[i].TryGetComponent(out PlugableStateController enemyController))
                     {
+                        if (Vector3.Distance(controller.transform.position, enemyController.transform.position) > controller.VisionRadius - enemyController.RichAI.radius)
+                        {
+                            continue;
+                        }
+
                         if (Physics.Linecast(controller.Eye.position, enemyController.Eye.position, out RaycastHit info,
                             controller.VisionBlockMask, QueryTriggerInteraction.Ignore))
                         {

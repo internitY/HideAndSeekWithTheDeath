@@ -17,17 +17,6 @@ namespace MAED.ActionAndStates
                 return true;
             }
 
-            if (Vector3.Distance(controller.transform.position, controller.ChaseTarget.transform.position) > controller.VisionRadius)
-            {
-                return true;
-            }
-
-            if (Physics.Linecast(controller.Eye.position, controller.ChaseTarget.Eye.position,
-                controller.VisionBlockMask, QueryTriggerInteraction.Ignore))
-            {
-                return true;
-            }
-
             return false;
         }
     }

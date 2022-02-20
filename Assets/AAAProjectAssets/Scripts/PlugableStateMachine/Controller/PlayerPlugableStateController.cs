@@ -10,6 +10,11 @@ namespace MAED.ActionAndStates
         {
             anim?.SetFloat("velocity", magnitude);
         }
+
+        public override void OnMovementStopped()
+        {
+            anim?.SetFloat("velocity", 0f);
+        }
     }
 }
 

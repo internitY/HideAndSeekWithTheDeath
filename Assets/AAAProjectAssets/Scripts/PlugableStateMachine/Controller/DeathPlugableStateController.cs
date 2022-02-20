@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DarkTonic.MasterAudio;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -76,6 +77,7 @@ namespace MAED.ActionAndStates
         {
             base.OnEnable();
             eyeImage.color = wanderColor;
+            MasterAudio.PlaySound3DFollowTransform("DeathWalk", transform);
         }
         public override void OnChaseTargetSet(PlugableStateController target)
         {
@@ -88,12 +90,11 @@ namespace MAED.ActionAndStates
             if (overwriteIndex >= 0)
             {
                 currentPatrolPointIndex = Mathf.Clamp(overwriteIndex, 0, currentPatrolPath.PathPoints.Length - 1);
-                nextPatrolPoint = currentPatrolPath.PathPoints[currentPatrolPointIndex];
-                SetDestination(nextPatrolPoint.position);
-                //Debug.Log(name + " took next patrol point to " + currentPatrolPath.PathPoints[currentPatrolPointIndex] + " by overwriting.");
             }
-
-            currentPatrolPointIndex = patrolForward ? currentPatrolPointIndex + 1 : currentPatrolPointIndex - 1;
+            else
+            {
+                currentPatrolPointIndex = patrolForward ? currentPatrolPointIndex + 1 : currentPatrolPointIndex - 1;
+            }
 
             if (currentPatrolPointIndex > currentPatrolPath.PathPoints.Length - 1)
             {
@@ -144,7 +145,6 @@ namespace MAED.ActionAndStates
 
                 SetToState(PatrolState);
                 deathPatrolType = DeathType.Patroler;
-                TakeClosestPatrolPathPoint();
             }
             else
             {

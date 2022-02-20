@@ -226,7 +226,7 @@ namespace MAED.ActionAndStates
             
             aiPath.canMove = true;
             aiPath.rvoDensityBehavior.ClearDestinationReached();
-            path = seeker.StartPath(transform.position, destination);
+            path = seeker.StartPath(transform.position, destination, OnPathComplete);
 
             //to be deterministic, path calculation needs to be blocked to stop async path calculation
             if (blockWhilePathCalculating)
@@ -243,13 +243,34 @@ namespace MAED.ActionAndStates
 
             return true;
         }
+        public virtual void OnPathComplete(Path p)
+        {
+            if (p.error)
+            {
+                Debug.LogError(p.error);
+            }
+            else
+            {
+                #if UNITY_EDITOR
+                aiPath.destination = p.vectorPath[p.vectorPath.Count - 1];
+                if (enableDebug)
+                {
+                    Debug.Log(name + " SetDestination to " + p.vectorPath[p.vectorPath.Count - 1]);
+                }
+                #endif
+            }
+        }
         public bool StopMovement()
         {
             aiPath.destination = transform.position;
             aiPath.canMove = false;
             seeker.CancelCurrentPathRequest();
-            anim?.SetFloat("velocity", 0f);
+            OnMovementStopped();
             return true;
+        }
+        public virtual void OnMovementStopped()
+        {
+
         }
         public bool ReachedDestination
         {

@@ -12,7 +12,7 @@ namespace MAED.ActionAndStates
 
         private void Attack(PlugableStateController controller)
         {
-            if (controller.CheckIfEventTimeElapsed(1f))
+            if (controller.CheckIfEventTimeElapsed(1.5f))
             {
                 //check for repathing
                 if (Vector3.Distance(controller.transform.position, controller.ChaseTarget.transform.position) < controller.AttackRadius)
