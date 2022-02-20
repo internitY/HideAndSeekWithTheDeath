@@ -299,6 +299,10 @@ namespace MAED.ActionAndStates
         public void TakeDamage(PlugableStateController attacker)
         {
             Debug.Log(name + " get attacked by " + attacker.name);
+            if (gameObject.CompareTag("Player"))
+            {
+                CollectableManager.Instance.GetComponent<GameOver>().DeathTouchOver();
+            }
         }
         #endregion target chasing
 
