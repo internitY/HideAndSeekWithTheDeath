@@ -20,6 +20,10 @@ public class AbilityManager : MonoBehaviour
 
     [SerializeField]
     private PlugableStateController playerController;
+    public PlugableStateController PlayerController
+    {
+        get => playerController;
+    }
 
     [SerializeField]
     private float sprintSpeed = 10f;
