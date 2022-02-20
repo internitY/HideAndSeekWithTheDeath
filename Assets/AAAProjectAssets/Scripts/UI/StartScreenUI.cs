@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class StartScreenUI : MonoBehaviour
 {
@@ -9,9 +10,11 @@ public class StartScreenUI : MonoBehaviour
     TextMeshProUGUI creditsText;
     bool active;
 
+
     public void StartButton()
     {
         Debug.Log("Load Sceen");
+        SceneManager.LoadSceneAsync(1);
     }
 
     public void CreditsButton()
