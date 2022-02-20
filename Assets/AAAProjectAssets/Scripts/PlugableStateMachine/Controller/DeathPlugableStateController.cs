@@ -148,7 +148,7 @@ namespace MAED.ActionAndStates
             }
             else
             {
-                Debug.LogWarning("PatrolPath " + path.name + " is already reserved or no path found. Death falling back to randomer type.");
+                Debug.LogWarning("PatrolPath is null, also already reserved or nothing found. Death [" + name + "] falling back to randomer type.");
 
                 SetToState(ResetState);
                 deathPatrolType = DeathType.Randomer;

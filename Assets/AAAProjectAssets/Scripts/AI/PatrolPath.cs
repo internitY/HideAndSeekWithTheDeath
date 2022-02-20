@@ -58,7 +58,7 @@ public class PatrolPath : MonoBehaviour
 
         for (int i = 0; i < pathPoints.Length; i++)
         {
-            float dist = (queryPosition - transform.position).sqrMagnitude;
+            float dist = (pathPoints[i].transform.position - queryPosition).sqrMagnitude;
 
             if (dist < maxDist)
             {
