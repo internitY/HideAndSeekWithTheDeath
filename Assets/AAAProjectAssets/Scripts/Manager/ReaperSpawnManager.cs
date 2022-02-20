@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MAED.ActionAndStates;
 
 public class ReaperSpawnManager : MonoBehaviour
 {
@@ -16,19 +17,39 @@ public class ReaperSpawnManager : MonoBehaviour
     [SerializeField]
     private Transform firstSpawnPoint;
 
+    [SerializeField]
+    private float spawnDelay = 3f;
+
     public void SpawnFirstReaper()
     {
         if (disableSpawn)
             return;
-        Instantiate(reaperPrefab, firstSpawnPoint.position, Quaternion.identity);
+        StartCoroutine(SpawnReaperRoutine(firstSpawnPoint.position));
+
     }
 
     public void SpawnReaper()
     {
         if (disableSpawn)
             return;
-        Instantiate(reaperPrefab, spawnpoints[(int)Random.Range(0,spawnpoints.Length)].position, Quaternion.identity);
+        StartCoroutine(SpawnReaperRoutine(spawnpoints[(int)Random.Range(0, spawnpoints.Length)].position));
+        //GameObject reaper = Instantiate(reaperPrefab, spawnpoints[(int)Random.Range(0,spawnpoints.Length)].position, Quaternion.identity);
     }
 
+    private IEnumerator SpawnReaperRoutine(Vector3 position)
+    {
+        GameObject reaper = Instantiate(reaperPrefab, position, Quaternion.identity);
+        DeathPlugableStateController controller = reaper.GetComponent<DeathPlugableStateController>();
+        controller.IsActive = false;
+
+        yield return new WaitForSeconds(spawnDelay);
+
+        //Disable VFX
+        Debug.LogError("Disable Spawn VFX");
+
+        controller.IsActive = true;
+
+    }
+    
 
 }

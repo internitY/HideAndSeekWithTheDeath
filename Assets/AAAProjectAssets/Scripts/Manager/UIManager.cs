@@ -7,10 +7,15 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private TextAnim infoText;
 
+    private void Start()
+    {
+        ChangeText("Collect the Soul Shards to reanimate yourself");
+    }
+
     public void ChangeText(string newText)
     {
         infoText.ChangeText(newText);
-        infoText.StartFading(5f);
+        infoText.StartFading(3f);
     }
 
 }

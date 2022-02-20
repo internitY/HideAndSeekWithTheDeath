@@ -8,7 +8,7 @@ public class GameOver : MonoBehaviour
 {
     private UIManager uiManager;
 
-    private PlugableStateController player;
+    private PlayerPlugableStateController player;
 
     private bool isGameovered;
 
