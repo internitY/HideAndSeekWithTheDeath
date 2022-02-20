@@ -1,5 +1,95 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6481241224982957878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 939761031255277591}
+  - component: {fileID: 2263712063747468612}
+  - component: {fileID: 117227866124364612}
+  - component: {fileID: 5451628194204287945}
+  m_Layer: 7
+  m_Name: AmbientSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &939761031255277591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6481241224982957878}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8233686860418016588}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2263712063747468612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6481241224982957878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8566d2e6d13472d41a5effbb2d61a969, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AmbientSoundGroup: DeathWalk
+  variationType: 1
+  variationName: 
+  playVolume: 1
+  exitMode: 0
+  exitFadeTime: 0.5
+  reEnterMode: 0
+  reEnterFadeTime: 0.5
+  FollowCaller: 1
+  UseClosestColliderPosition: 0
+  UseTopCollider: 1
+  IncludeChildColliders: 0
+  RuntimeFollower: {fileID: 0}
+  colliderMaxDistance: 12
+  lastTimeMaxDistanceCalced: 637809673704340470
+--- !u!135 &117227866124364612
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6481241224982957878}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 12
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &5451628194204287945
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6481241224982957878}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8233686859091297054
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +206,6 @@ GameObject:
   - component: {fileID: 8233686860418016586}
   - component: {fileID: 8233686860418016576}
   - component: {fileID: 8233686860418016579}
-  - component: {fileID: 7179387818040462053}
   m_Layer: 7
   m_Name: TheDeath_Patroler
   m_TagString: TheDeath
@@ -139,6 +228,7 @@ Transform:
   - {fileID: 8233686860840597438}
   - {fileID: 8233686860531185782}
   - {fileID: 381980485048595945}
+  - {fileID: 939761031255277591}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -325,33 +415,6 @@ MonoBehaviour:
   wallAvoidFalloff: 1
   priority: 0.5
   debug: 0
---- !u!114 &7179387818040462053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8233686860418016587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8566d2e6d13472d41a5effbb2d61a969, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AmbientSoundGroup: DeathWalk
-  variationType: 1
-  variationName: 
-  playVolume: 1
-  exitMode: 0
-  exitFadeTime: 0.5
-  reEnterMode: 0
-  reEnterFadeTime: 0.5
-  FollowCaller: 1
-  UseClosestColliderPosition: 1
-  UseTopCollider: 1
-  IncludeChildColliders: 0
-  RuntimeFollower: {fileID: 0}
-  colliderMaxDistance: 12
-  lastTimeMaxDistanceCalced: 637809669520196397
 --- !u!1 &8233686860531185783
 GameObject:
   m_ObjectHideFlags: 0

@@ -98,7 +98,6 @@ GameObject:
   - component: {fileID: 2399594331697491510}
   - component: {fileID: 2399594331697491519}
   - component: {fileID: 2399594331697491512}
-  - component: {fileID: 3562013243063458825}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -297,14 +296,6 @@ MonoBehaviour:
   wallAvoidFalloff: 1
   priority: 1
   debug: 0
---- !u!81 &3562013243063458825
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2399594331697491504}
-  m_Enabled: 1
 --- !u!1 &2399594332293047596
 GameObject:
   m_ObjectHideFlags: 0
