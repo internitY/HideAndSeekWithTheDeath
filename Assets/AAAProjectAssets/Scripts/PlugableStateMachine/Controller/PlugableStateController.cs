@@ -201,6 +201,9 @@ namespace MAED.ActionAndStates
         }
         public bool SetDestination(Vector3 destination, bool checkForValidPath = false)
         {
+            if (!aiIsActive)
+                return false;
+
             if (checkForValidPath)
             {
                 if (!PathIsPossible(transform.position, destination))
