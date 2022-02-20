@@ -19,6 +19,14 @@ public class Timer : MonoBehaviour
     private float deathstartsAt;
     private bool deathStarted;
 
+    [SerializeField]
+    private bool reverseTimer;
+    [SerializeField]
+    private bool spawnReaperWithTime;
+    [SerializeField]
+    private float reaperSpawnTime = 30f;
+    private float reaperSpawnsAt;
+
     //[SerializeField]
     
 
@@ -31,7 +39,16 @@ public class Timer : MonoBehaviour
         gameOver = GetComponent<GameOver>();
         uiManager = GetComponent<UIManager>();
         reaperSpawnManager = GetComponent<ReaperSpawnManager>();
-        deathstartsAt = remainingTime - deathStartTime;
+        reaperSpawnsAt = reaperSpawnTime;
+        if (reverseTimer)
+        {
+            remainingTime = 0;
+            deathstartsAt = deathStartTime;
+        }
+        else
+        {
+            deathstartsAt = remainingTime - deathStartTime;
+        }
     }
 
 
@@ -46,13 +63,40 @@ public class Timer : MonoBehaviour
     {
         if (timerIsRunning)
         {
-            remainingTime -= Time.deltaTime;
-
-            if((remainingTime < deathstartsAt) && !deathStarted)
+            if (reverseTimer)
             {
-                deathStarted = true;
-                uiManager.ChangeText("A Reaper appeared");
-                reaperSpawnManager.SpawnFirstReaper();
+                remainingTime += Time.deltaTime;
+
+                if ((remainingTime > deathstartsAt) && !deathStarted)
+                {
+                    deathStarted = true;
+                    uiManager.ChangeText("A Reaper appeared");
+                    reaperSpawnManager.SpawnFirstReaper();
+                }
+                if(remainingTime > reaperSpawnsAt && spawnReaperWithTime)
+                {
+                    uiManager.ChangeText("A Reaper appeared");
+                    reaperSpawnManager.SpawnReaper();
+                    reaperSpawnsAt = remainingTime + reaperSpawnTime; 
+                }
+            }
+            else
+            {
+                remainingTime -= Time.deltaTime;
+
+                if((remainingTime < deathstartsAt) && !deathStarted)
+                {
+                    deathStarted = true;
+                    uiManager.ChangeText("A Reaper appeared");
+                    reaperSpawnManager.SpawnFirstReaper();
+                }
+                if (remainingTime < reaperSpawnsAt && spawnReaperWithTime)
+                {
+                    uiManager.ChangeText("A Reaper appeared");
+                    reaperSpawnManager.SpawnReaper();
+                    reaperSpawnsAt = remainingTime - reaperSpawnTime;
+                }
+
             }
 
             CheckDisplay();
@@ -62,6 +106,10 @@ public class Timer : MonoBehaviour
 
     private void CheckDisplay()
     {
+        if(timeText == null)
+        {
+            return;
+        }
         if (remainingTime <= 0)
         {
             timeText.text = "GAMEOVER";

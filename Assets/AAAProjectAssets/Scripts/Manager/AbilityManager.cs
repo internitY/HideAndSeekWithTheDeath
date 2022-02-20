@@ -22,8 +22,8 @@ public class AbilityManager : MonoBehaviour
     private Ability[] abilities;
 
     [SerializeField]
-    private PlugableStateController playerController;
-    public PlugableStateController PlayerController
+    private PlayerPlugableStateController playerController;
+    public PlayerPlugableStateController PlayerController
     {
         get => playerController;
     }

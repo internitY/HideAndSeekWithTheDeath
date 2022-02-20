@@ -1064,7 +1064,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 12288
   mousePosition: {x: 0, y: 0}
-  playerController: {fileID: 192504732}
+  playerController: {fileID: 0}
   playerMoveState: {fileID: 11400000, guid: 8de01951b8ef5b040aa858b61366e098, type: 2}
   playerInteractState: {fileID: 0}
   playerWaypointMarker: {fileID: 1624111210}
@@ -9003,6 +9003,8 @@ MonoBehaviour:
   lastTargetDirection: {x: 0, y: 0, z: 0}
   eventTime: 0
   enableDebug: 0
+  patrolState: {fileID: 0}
+  deathPatrolType: 0
   currentPatrolPath: {fileID: 0}
   nextPatrolPoint: {fileID: 0}
   currentPatrolPointIndex: 0
@@ -17997,7 +17999,7 @@ PrefabInstance:
         type: 3}
       propertyPath: playerController
       value: 
-      objectReference: {fileID: 192504732}
+      objectReference: {fileID: 0}
     - target: {fileID: 28568063107519655, guid: aed93682d2229964fa8c5c7fcc71d2c4,
         type: 3}
       propertyPath: abilities.Array.data[0]
@@ -18078,6 +18080,11 @@ PrefabInstance:
       propertyPath: timeText
       value: 
       objectReference: {fileID: 1457346721}
+    - target: {fileID: 28568063107519707, guid: aed93682d2229964fa8c5c7fcc71d2c4,
+        type: 3}
+      propertyPath: reverseTimer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aed93682d2229964fa8c5c7fcc71d2c4, type: 3}
 --- !u!1001 &3982941271595211011
