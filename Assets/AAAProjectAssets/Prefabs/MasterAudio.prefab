@@ -738,10 +738,10 @@ MonoBehaviour:
   importance: 5
   isUninterruptible: 0
   useLocalization: 0
-  useRandomPitch: 0
+  useRandomPitch: 1
   randomPitchMode: 0
-  randomPitchMin: 0
-  randomPitchMax: 0
+  randomPitchMin: -0.2
+  randomPitchMax: 0.2
   useRandomVolume: 0
   randomVolumeMode: 0
   randomVolumeMin: 0
@@ -1210,7 +1210,7 @@ MonoBehaviour:
   groupPlayType: 0
   isSelected: 0
   isExpanded: 1
-  groupMasterVolume: 0.5
+  groupMasterVolume: 0.2
   retriggerPercentage: 100
   curVariationMode: 0
   alwaysHighestPriority: 0
@@ -1257,7 +1257,7 @@ MonoBehaviour:
   soundPlayedEventActive: 0
   soundPlayedCustomEvent: 
   willCleanUpDelegatesAfterStop: 1
-  frames: 1339
+  frames: 2325
 --- !u!1 &2505958875320461595
 GameObject:
   m_ObjectHideFlags: 0

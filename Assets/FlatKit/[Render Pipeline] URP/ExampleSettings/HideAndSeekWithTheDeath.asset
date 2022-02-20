@@ -44,7 +44,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   near: 0
   far: 30
-  distanceFogIntensity: 0.05
+  distanceFogIntensity: 0.1
   useDistanceFogOnSky: 0
   useHeight: 1
   heightGradient:
@@ -76,7 +76,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  low: 10
+  low: 0
   high: 50
   heightFogIntensity: 0.05
   useHeightFogOnSky: 0
