@@ -57,10 +57,12 @@ public class AbilityManager : MonoBehaviour
     {
         playerInput.Enable();
         playerInput.Player.MousePosition.performed += context => mousePosition = context.ReadValue<Vector2>();
-        playerInput.Player.Ability1.performed += context => CheckAbility(0);
-        playerInput.Player.Ability2.performed += context => SprintAbility();//CheckAbility(1);
+
+        playerInput.Player.Ability1.performed += context => SprintAbility();//CheckAbility(1);
+        playerInput.Player.Ability2.performed += context => CheckAbility(1);
         playerInput.Player.Ability3.performed += context => CheckAbility(2);
         playerInput.Player.Ability4.performed += context => CheckAbility(3);
+
         playerInput.Player.Primary.performed += context => OnPrimaryStarted();
         playerInput.Player.Secondary.performed += context => OnEscStarted();
         playerInput.Player.ESC.performed += context => OnEscStarted();
@@ -161,10 +163,10 @@ public class AbilityManager : MonoBehaviour
     }
     private void SprintAbility()
     {
-        if(abilities[1].IsUnlocked() && !abilities[1].OnCooldown())
+        if(abilities[0].IsUnlocked() && !abilities[0].OnCooldown())
         {
-            abilities[1].ActiveState();
-            abilities[1].Sprint();
+            abilities[0].ActiveState();
+            abilities[0].Sprint();
             StartCoroutine(Sprint());
             activeAbility = -1;
         }
@@ -176,6 +178,6 @@ public class AbilityManager : MonoBehaviour
         playerController.RichAI.maxSpeed = sprintSpeed;
         yield return new WaitForSeconds(sprintDuration);
         playerController.RichAI.maxSpeed = oldSpeed;
-        abilities[1].InActiveState();
+        abilities[0].InActiveState();
     }
 }

@@ -53,6 +53,9 @@ MonoBehaviour:
   remainingTime: 100
   timerIsRunning: 1
   deathStartTime: 5
+  reverseTimer: 1
+  spawnReaperWithTime: 0
+  reaperSpawnTime: 30
 --- !u!114 &28568063107519705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,7 +83,7 @@ MonoBehaviour:
   collectText: {fileID: 0}
   collectableName: Shards
   collectCount: 0
-  unlockAtCount: 01000000010000000300000004000000
+  unlockAtCount: 01000000020000000400000008000000
   reaperSpawnAt: 2
 --- !u!114 &28568063107519655
 MonoBehaviour:
@@ -132,7 +135,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13b2e139875ed148a78f24ed851f753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableSpawn: 1
-  reaperPrefab: {fileID: 0}
-  spawnpoints: []
+  disableSpawn: 0
+  reaperPrefab: {fileID: 8233686860418016587, guid: 51ecd7c8cdc93b84e85e36ea48cf675a,
+    type: 3}
+  spawnpoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   firstSpawnPoint: {fileID: 0}
+  spawnDelay: 3

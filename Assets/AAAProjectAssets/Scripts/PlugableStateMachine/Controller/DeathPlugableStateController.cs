@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DarkTonic.MasterAudio;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 namespace MAED.ActionAndStates
 {
@@ -28,6 +29,9 @@ namespace MAED.ActionAndStates
         [SerializeField] private Color wanderColor = Color.yellow;
         [SerializeField] private Color chaseColor = Color.red;
 
+        [Header("VfX")] 
+        [SerializeField] private VisualEffect SpawnEffect;
+
         public State PatrolState => patrolState;
 
         public DeathType DeathPatrolType
@@ -49,12 +53,22 @@ namespace MAED.ActionAndStates
 
         protected override IEnumerator Start()
         {
+            if (SpawnEffect != null)
+            {
+                SpawnEffect.gameObject.SetActive(true);
+            }
+
             while (PatrolPathManager.Instance == null)
             {
                 yield return null;
             }
 
             yield return new WaitForSeconds(2f);
+
+            if (SpawnEffect != null)
+            {
+                SpawnEffect.gameObject.SetActive(false);
+            }
 
             if (deathPatrolType == DeathType.Patroler)
             {

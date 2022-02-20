@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DarkTonic.MasterAudio;
 using UnityEngine;
 
 public class Collectible : MonoBehaviour
@@ -11,6 +12,7 @@ public class Collectible : MonoBehaviour
         {
             CollectableManager.Instance.Collect();
             gameObject.SetActive(false);
+            MasterAudio.PlaySound3DAtVector3AndForget("Collect", transform.position);
         }
     }
 }

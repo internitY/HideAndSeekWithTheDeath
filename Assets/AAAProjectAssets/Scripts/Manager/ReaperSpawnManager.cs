@@ -45,7 +45,7 @@ public class ReaperSpawnManager : MonoBehaviour
         yield return new WaitForSeconds(spawnDelay);
 
         //Disable VFX
-        Debug.LogError("Disable Spawn VFX");
+        //Debug.LogError("Disable Spawn VFX");
 
         controller.IsActive = true;
 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8941316018461333826}
   m_Layer: 8
   m_Name: EventBed
-  m_TagString: Untagged
+  m_TagString: Bed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 174aabcce82b5b7418a941abfd6f93d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winDelayTime: 5
+  winDelayTime: 2
   maxDistance: 5
 --- !u!65 &8941316018461333826
 BoxCollider:
@@ -972,7 +972,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: de7de566271043e40a0c0bc38f827609,
         type: 3}
       propertyPath: m_TagString
-      value: Bed
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: de7de566271043e40a0c0bc38f827609,
         type: 3}

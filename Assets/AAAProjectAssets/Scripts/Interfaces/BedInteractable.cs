@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using MAED.ActionAndStates;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,19 +13,19 @@ public class BedInteractable : MonoBehaviour, IInteractable
 
     private AbilityManager manager;
     private UIManager uiManager;
-    private Transform playerTrans; 
+    private PlayerPlugableStateController player; 
     private void Start()
     {
         manager = FindObjectOfType<AbilityManager>();
         uiManager = manager.GetComponent<UIManager>();
-        playerTrans = FindObjectOfType<PlayerPositionController>().PlayerWaypointMarker;
+        player = FindObjectOfType<PlayerPlugableStateController>();
         manager.winInteractable = this;
     }
     public void Use()
     {
-        if(Vector3.Distance(transform.position, playerTrans.position) > maxDistance)
+        if(Vector3.Distance(transform.position, player.transform.position) > maxDistance)
         {
-            Debug.LogError("Too far away");
+            Debug.LogWarning("Too far away");
             return;
         }
         uiManager.ChangeText("Stay still you don't want to make a mistake");
@@ -34,10 +35,12 @@ public class BedInteractable : MonoBehaviour, IInteractable
 
     private IEnumerator WinDelay()
     {
+        player.IsHiding = true;
         //Block PlayerMovement Cancel with ESC or rightclick?
         yield return new WaitForSeconds(winDelayTime);
         uiManager.ChangeText("You survived Death");
         SceneManager.LoadScene(2);
+        player.IsHiding = false;
     }
 
     public void CancelWaitForWin()
