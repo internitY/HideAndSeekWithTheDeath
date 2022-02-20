@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BedInteractable : MonoBehaviour, IInteractable
 {
@@ -35,7 +36,8 @@ public class BedInteractable : MonoBehaviour, IInteractable
     {
         //Block PlayerMovement Cancel with ESC or rightclick?
         yield return new WaitForSeconds(winDelayTime);
-        Debug.Log("WINNER");
+        uiManager.ChangeText("You survived Death");
+        SceneManager.LoadScene(2);
     }
 
     public void CancelWaitForWin()

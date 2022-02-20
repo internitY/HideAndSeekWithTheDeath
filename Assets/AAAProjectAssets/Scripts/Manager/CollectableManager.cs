@@ -42,7 +42,10 @@ public class CollectableManager : MonoBehaviour
     private void Start()
     {
         if (collectText != null)
-            collectText.text = collectableName + ": " + collectCount;
+        {
+            //collectText.text = collectableName + ": " + collectCount;
+            collectText.text = "" + collectCount;
+        }
         abilityManager = GetComponent<AbilityManager>();
         reaperSpawnManager = GetComponent<ReaperSpawnManager>();
 
@@ -56,7 +59,10 @@ public class CollectableManager : MonoBehaviour
         collectCount++;
 
         if(collectText != null)
-            collectText.text = collectableName+": " + collectCount;
+        {
+            //collectText.text = collectableName+": " + collectCount;
+            collectText.text = "" + collectCount;
+        }
 
         for (int i = 0; i < unlockAtCount.Length; i++)
         {
