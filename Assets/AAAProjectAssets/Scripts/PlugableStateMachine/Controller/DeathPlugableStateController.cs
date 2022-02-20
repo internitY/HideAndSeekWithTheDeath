@@ -170,6 +170,7 @@ namespace MAED.ActionAndStates
         }
         #endregion patrol
 
+#if UNITY_EDITOR
         protected override void OnDrawGizmos()
         {
             base.OnDrawGizmos();
@@ -180,6 +181,6 @@ namespace MAED.ActionAndStates
                 Gizmos.DrawLine(transform.position, currentPatrolPath.PathPoints[currentPatrolPath.GetClosestPatrolWaypointIndex(transform.position)].position);
             }
         }
+#endif
     }
 }
-

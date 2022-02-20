@@ -667,7 +667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51db2a10604b84f49b65bb896667ad86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isUnlocked: 1
+  isUnlocked: 0
   InteractTag: Bed
   speed: 1
 --- !u!1 &3982941270685352355
