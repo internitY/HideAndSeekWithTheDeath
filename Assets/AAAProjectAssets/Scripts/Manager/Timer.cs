@@ -24,10 +24,12 @@ public class Timer : MonoBehaviour
 
     private GameOver gameOver;
     private ReaperSpawnManager reaperSpawnManager;
+    private UIManager uiManager;
 
     private void Start()
     {
         gameOver = GetComponent<GameOver>();
+        uiManager = GetComponent<UIManager>();
         reaperSpawnManager = GetComponent<ReaperSpawnManager>();
         deathstartsAt = remainingTime - deathStartTime;
     }
@@ -49,6 +51,7 @@ public class Timer : MonoBehaviour
             if((remainingTime < deathstartsAt) && !deathStarted)
             {
                 deathStarted = true;
+                uiManager.ChangeText("A Reaper appeared");
                 reaperSpawnManager.SpawnFirstReaper();
             }
 

@@ -8,6 +8,9 @@ public class AbilityManager : MonoBehaviour
 
     private PlayerControls playerInput;
 
+    private UIManager uIManager;
+    public UIManager UiManager { get => uIManager; }
+
     [SerializeField] 
     private LayerMask worldPositionMask;
     [SerializeField, ShowOnly] 
@@ -48,6 +51,7 @@ public class AbilityManager : MonoBehaviour
     private void Start()
     {
         oldSpeed = playerController.RichAI.maxSpeed;
+        uIManager = GetComponent<UIManager>();
     }
     private void OnEnable()
     {
