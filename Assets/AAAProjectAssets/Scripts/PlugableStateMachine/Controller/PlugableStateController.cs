@@ -9,7 +9,7 @@ namespace MAED.ActionAndStates
     {
         private RichAI aiPath;
         private Seeker seeker;
-        private Animator anim;
+        protected Animator anim;
 
         [SerializeField] private bool aiIsActive = true;
         [SerializeField] private bool blockWhilePathCalculating = true;
@@ -98,6 +98,7 @@ namespace MAED.ActionAndStates
         public LayerMask EnemyMask => enemyMask;
         public LayerMask VisionBlockMask => visionBlockMask;
         public Transform Eye => eye;
+        public Animator Animator => anim;
         #endregion getter
 
         #region unity
@@ -123,7 +124,6 @@ namespace MAED.ActionAndStates
         {
 
         }
-
         protected virtual void Update()
         {
             UpdateState();
@@ -137,10 +137,15 @@ namespace MAED.ActionAndStates
                 return;
 
             magnitude = ReachedDestination ? 0f : aiPath.velocity.magnitude;
-            anim?.SetFloat("velocity", magnitude);
 
             if (currentState != null)
                 currentState.UpdateState(this);
+
+            OnUpdateState();
+        }
+        public virtual void OnUpdateState()
+        {
+
         }
         /// <summary>
         /// Sets the state to the specific state.

@@ -32,6 +32,12 @@ public class PatrolPathManager : MonoBehaviour
             }
         }
 
+        if (availables.Count <= 0)
+        {
+            Debug.LogWarning("No unreserved patrol paths available");
+            return null;
+        }
+
         PatrolPath result = null;
         for (int i = 0; i < availables.Count; i++)
         {
