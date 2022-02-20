@@ -17,12 +17,10 @@ namespace MAED.ActionAndStates
                 //check for repathing
                 if (Vector3.Distance(controller.transform.position, controller.ChaseTarget.transform.position) < controller.AttackRadius)
                 {
-                    controller.TakeDamage(controller);
+                    controller.ChaseTarget.TakeDamage(controller);
                     controller.ResetEventTime();
                 }
             }
-
-            
         }
     }
 }
