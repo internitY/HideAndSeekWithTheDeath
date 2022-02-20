@@ -87,7 +87,8 @@ namespace MAED.ActionAndStates
         {
             if (overwriteIndex >= 0)
             {
-                nextPatrolPoint = currentPatrolPath.PathPoints[Mathf.Clamp(overwriteIndex, 0, currentPatrolPath.PathPoints.Length -1)];
+                currentPatrolPointIndex = Mathf.Clamp(overwriteIndex, 0, currentPatrolPath.PathPoints.Length - 1);
+                nextPatrolPoint = currentPatrolPath.PathPoints[currentPatrolPointIndex];
                 SetDestination(nextPatrolPoint.position);
                 //Debug.Log(name + " took next patrol point to " + currentPatrolPath.PathPoints[currentPatrolPointIndex] + " by overwriting.");
             }
