@@ -8,7 +8,15 @@ namespace MAED.ActionAndStates
 {
     public class DeathPlugableStateController : PlugableStateController
     {
-        [Header("Death Patrol")]
+        [Header("Death Patrol")] 
+        [SerializeField] private State patrolState;
+        [SerializeField] private DeathType deathPatrolType = DeathType.Randomer;
+        public enum DeathType
+        {
+            Randomer,
+            Patroler
+        }
+
         [SerializeField] private PatrolPath currentPatrolPath;
         [SerializeField, ShowOnly] private Transform nextPatrolPoint = null;
         [SerializeField, ShowOnly] private int currentPatrolPointIndex = 0;
@@ -19,6 +27,25 @@ namespace MAED.ActionAndStates
         [SerializeField] private Color wanderColor = Color.yellow;
         [SerializeField] private Color chaseColor = Color.red;
 
+        public State PatrolState => patrolState;
+
+        public DeathType DeathPatrolType
+        {
+            get => deathPatrolType;
+            set
+            {
+                deathPatrolType = value;
+                if (deathPatrolType == DeathType.Patroler)
+                {
+                    SetToState(PatrolState);
+                }
+                else
+                {
+                    SetToState(ResetState);
+                }
+            }
+        }
+
         protected override IEnumerator Start()
         {
             while (PatrolPathManager.Instance == null)
@@ -26,12 +53,24 @@ namespace MAED.ActionAndStates
                 yield return null;
             }
 
-            if (currentPatrolPath == null)
-            {
-                TakeClosestPatrolPath(false);
-            }
+            yield return new WaitForSeconds(2f);
 
-            SetToState(ResetState);
+            if (deathPatrolType == DeathType.Patroler)
+            {
+                if (currentPatrolPath == null)
+                {
+                    TakeClosestPatrolPath();
+                }
+                else
+                {
+                    currentPatrolPath.TakePatrolPath(this);
+                    SetToState(PatrolState);
+                }
+            }
+            else
+            {
+                SetToState(ResetState);
+            }
         }
         protected override void OnEnable()
         {
@@ -50,7 +89,7 @@ namespace MAED.ActionAndStates
             {
                 nextPatrolPoint = currentPatrolPath.PathPoints[Mathf.Clamp(overwriteIndex, 0, currentPatrolPath.PathPoints.Length -1)];
                 SetDestination(nextPatrolPoint.position);
-                Debug.Log(name + " took next patrol point to " + currentPatrolPath.PathPoints[currentPatrolPointIndex] + " by overwriting.");
+                //Debug.Log(name + " took next patrol point to " + currentPatrolPath.PathPoints[currentPatrolPointIndex] + " by overwriting.");
             }
 
             currentPatrolPointIndex = patrolForward ? currentPatrolPointIndex + 1 : currentPatrolPointIndex - 1;
@@ -98,11 +137,20 @@ namespace MAED.ActionAndStates
             if (path != null)
             {
                 currentPatrolPath = path;
-                currentPatrolPath.TakePatrolPath(this);
+
+                if (mustBeUnreserved)
+                    currentPatrolPath.TakePatrolPath(this);
+
+                SetToState(PatrolState);
+                deathPatrolType = DeathType.Patroler;
+                TakeClosestPatrolPathPoint();
             }
             else
             {
-                Debug.LogWarning("PatrolPath " + path.name + " is already reserved or no path found.");
+                Debug.LogWarning("PatrolPath " + path.name + " is already reserved or no path found. Death falling back to randomer type.");
+
+                SetToState(ResetState);
+                deathPatrolType = DeathType.Randomer;
             }
         }
         #endregion patrol

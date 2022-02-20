@@ -16,7 +16,24 @@ namespace MAED.ActionAndStates
         {
             if (controller.CheckIfEventTimeElapsed(maxSearchTime))
             {
-                controller.SetToState(controller.ResetState);
+                DeathPlugableStateController death = controller as DeathPlugableStateController;
+
+                if (death == null)
+                {
+                    Debug.LogWarning("Search Action handles by a non valid child class of plugable state controller. (not death).");
+                }
+                else
+                {
+                    if (death.DeathPatrolType == DeathPlugableStateController.DeathType.Patroler)
+                    {
+                        death.SetToState(death.PatrolState);
+                    }
+                    else
+                    {
+                        death.SetToState(death.ResetState);
+                    }
+                }
+                
                 return;
             }
 

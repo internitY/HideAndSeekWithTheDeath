@@ -10,7 +10,7 @@ public class PlayerPositionController : MonoBehaviour
     [SerializeField, ShowOnly] private Vector2 mousePosition;
 
     [Header("Player References")]
-    [SerializeField] private PlugableStateController playerController;
+    [SerializeField] private PlayerPlugableStateController playerController;
     [SerializeField] private State playerMoveState;
     [SerializeField] private State playerInteractState;
     [SerializeField] private Transform playerWaypointMarker;
